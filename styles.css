@@ -201,10 +201,13 @@ button {
 .logo {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 84px;
   height: 36px;
   flex-shrink: 0;
+}
+
+.logo img {
+  width: 140px;
+  height: auto;
 }
 
 .navbar__menu {
@@ -591,10 +594,6 @@ button {
   gap: 24px;
   width: 500px;
   flex-shrink: 0;
-}
-
-.footer__newsletter .logo {
-  justify-content: flex-start;
 }
 
 .newsletter-form {
