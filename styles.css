@@ -124,17 +124,6 @@ html.lenis,
   transform: none;
 }
 
-/* Fixed WebGL planet behind everything */
-.planet-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-}
-
 .page {
   position: relative;
   z-index: 1;
@@ -667,9 +656,32 @@ html.lenis,
 .partner-logos {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px 28px;
+  gap: 12px;
   padding: 4px 0;
-  opacity: 0.7;
+}
+
+.partner-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 48px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  opacity: 0.9;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.partner-chip:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.partner-chip img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* ============ GALLERY / SLIDER ============ */
