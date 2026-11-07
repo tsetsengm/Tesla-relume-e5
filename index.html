@@ -6,329 +6,339 @@
   <title>Tesla-Tsetsen — Албан ёсны дистрибютер</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Three.js r0.143 (planet shader injection relies on this exact version) -->
+  <script type="importmap">
+  { "imports": {
+    "three": "https://unpkg.com/three@0.143.0/build/three.module.js",
+    "three/examples/jsm/": "https://unpkg.com/three@0.143.0/examples/jsm/"
+  }}
+  </script>
 </head>
 <body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="navbar__inner">
-      <a href="#" class="logo" aria-label="Tesla-Tsetsen нүүр хуудас">
-        <img src="assets/icons/tesla-wordmark.svg" width="140" height="14" alt="Tesla" />
-      </a>
+  <!-- Fixed WebGL planet (behind everything) -->
+  <canvas class="planet-canvas" aria-hidden="true"></canvas>
 
-      <button class="navbar__toggle" type="button" aria-label="Цэс нээх" aria-expanded="false" aria-controls="nav-menu">
-        <span></span><span></span><span></span>
-      </button>
+  <div class="page" id="top">
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="navbar__inner">
+        <a href="#top" class="logo" aria-label="Tesla-Tsetsen нүүр хуудас">
+          <img src="assets/icons/tesla-wordmark.svg" width="140" height="14" alt="Tesla" />
+        </a>
 
-      <div class="navbar__menu" id="nav-menu">
-        <nav class="navbar__links" aria-label="Үндсэн цэс">
-          <a href="#model-3" class="nav-link">Model 3</a>
-          <a href="#model-y" class="nav-link">Model Y</a>
-          <a href="#cybertruck" class="nav-link">Cybertruck</a>
-          <a href="#roadster" class="nav-link">Roadster</a>
-          <a href="#robotaxi" class="nav-link nav-link--dropdown">
-            Robotaxi
-            <img src="assets/icons/chevron-down.svg" width="24" height="24" alt="" />
-          </a>
-        </nav>
-        <div class="navbar__actions">
-          <a href="#contact" class="btn btn--secondary btn--sm">Холбоо барих</a>
-          <a href="#test-drive" class="btn btn--primary btn--sm">Test drive</a>
-        </div>
-      </div>
-    </div>
-  </header>
+        <button class="navbar__toggle" type="button" aria-label="Цэс нээх" aria-expanded="false" aria-controls="nav-menu">
+          <span></span><span></span><span></span>
+        </button>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero">
-      <img class="hero__bg" src="assets/images/hero.jpg" alt="" />
-      <div class="hero__overlay"></div>
-      <div class="container">
-        <div class="hero__content">
-          <h1 class="hero__title">Албан ёсны дистрибютер</h1>
-          <p class="hero__text">Хүчирхэг, хэмнэлттэй, байгальд ээлтэй ирээдүйн жолоодлогыг өнөөдөр эхлүүл.</p>
-          <div class="actions">
-            <a href="#models" class="btn btn--primary">Button</a>
-            <a href="#contact" class="btn btn--secondary">Холбоо барих</a>
+        <div class="navbar__menu" id="nav-menu">
+          <nav class="navbar__links" aria-label="Үндсэн цэс">
+            <a href="#model-3" class="nav-link">Model 3</a>
+            <a href="#model-y" class="nav-link">Model Y</a>
+            <a href="#cybertruck" class="nav-link">Cybertruck</a>
+            <a href="#roadster" class="nav-link">Roadster</a>
+            <a href="#robotaxi" class="nav-link nav-link--dropdown">
+              Robotaxi
+              <img class="icon" src="assets/icons/chevron-down.svg" width="24" height="24" alt="" />
+            </a>
+          </nav>
+          <div class="navbar__actions">
+            <a href="#contact" class="btn btn--secondary btn--sm">Холбоо барих</a>
+            <a href="#test-drive" class="btn btn--primary btn--sm">Test drive</a>
           </div>
         </div>
       </div>
-    </section>
+    </header>
 
-    <!-- Models overview -->
-    <section class="section section--white" id="models">
-      <div class="container">
-        <div class="models">
-          <article class="model-card">
-            <img class="model-card__img" src="assets/images/model-3.jpg" alt="Tesla Model 3" />
-            <div class="model-card__body">
-              <h3 class="h5">Model 3</h3>
-              <p>Model 3 нь спорт седан маягийн цахилгаан машин. Жилийн 1.99% хүүтэй зээлээр авах боломжтой</p>
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <img class="hero__bg" src="assets/images/hero.jpg" alt="" />
+        <div class="hero__overlay"></div>
+        <div class="container">
+          <div class="hero__content">
+            <h1 class="hero__title" data-reveal style="--rd:60ms">Албан ёсны дистрибютер</h1>
+            <p class="hero__text" data-reveal style="--rd:180ms">Хүчирхэг, хэмнэлттэй, байгальд ээлтэй ирээдүйн жолоодлогыг өнөөдөр эхлүүл.</p>
+            <div class="actions" data-reveal style="--rd:300ms">
+              <a href="#models" class="btn btn--primary">Button <img class="icon" src="assets/icons/arrow-forward.svg" width="18" height="18" alt="" /></a>
+              <a href="#contact" class="btn btn--secondary">Холбоо барих</a>
             </div>
-            <div class="actions actions--center">
-              <a href="#" class="btn btn--secondary">Одоо захиалах</a>
-              <a href="#model-3" class="btn btn--link">Дэлгэрэнгүй <img src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
-            </div>
-          </article>
+          </div>
+        </div>
+      </section>
 
-          <article class="model-card">
-            <img class="model-card__img" src="assets/images/model-y.jpg" alt="Tesla Model Y" />
-            <div class="model-card__body">
-              <h3 class="h5">Model Y</h3>
-              <p>SUV цахилгаан машин. Ачаа тээш, зорчигчдод илүү зайтай тул гэр бүлд тохиромжтой.</p>
-            </div>
-            <div class="actions actions--center">
-              <a href="#" class="btn btn--secondary">Одоо захиалах</a>
-              <a href="#model-y" class="btn btn--link">Дэлгэрэнгүй <img src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
-            </div>
-          </article>
+      <!-- Models overview -->
+      <section class="section" id="models">
+        <div class="container">
+          <div class="models">
+            <article class="model-card card" data-reveal style="--rd:0ms">
+              <img class="model-card__img" src="assets/images/model-3.jpg" alt="Tesla Model 3" />
+              <div class="model-card__body">
+                <h3 class="h5">Model 3</h3>
+                <p>Model 3 нь спорт седан маягийн цахилгаан машин. Жилийн 1.99% хүүтэй зээлээр авах боломжтой</p>
+              </div>
+              <div class="actions actions--center">
+                <a href="#" class="btn btn--secondary">Одоо захиалах</a>
+                <a href="#model-3" class="btn btn--link">Дэлгэрэнгүй <img class="icon" src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
+              </div>
+            </article>
 
-          <article class="model-card">
-            <img class="model-card__img" src="assets/images/cybertruck.jpg" alt="Tesla Cybertruck" />
-            <div class="model-card__body">
-              <h3 class="h5">Cybertruck</h3>
-              <p>Зэвэрдэггүй гангаар хийсэн футурист дизайнтай, бат бөх бөгөөд замгүй газар явахад зориулагдсан.</p>
-            </div>
-            <div class="actions actions--center">
-              <a href="#" class="btn btn--secondary">Одоо захиалах</a>
-              <a href="#cybertruck" class="btn btn--link">Дэлгэрэнгүй <img src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
-            </div>
-          </article>
+            <article class="model-card card" data-reveal style="--rd:90ms">
+              <img class="model-card__img" src="assets/images/model-y.jpg" alt="Tesla Model Y" />
+              <div class="model-card__body">
+                <h3 class="h5">Model Y</h3>
+                <p>SUV цахилгаан машин. Ачаа тээш, зорчигчдод илүү зайтай тул гэр бүлд тохиромжтой.</p>
+              </div>
+              <div class="actions actions--center">
+                <a href="#" class="btn btn--secondary">Одоо захиалах</a>
+                <a href="#model-y" class="btn btn--link">Дэлгэрэнгүй <img class="icon" src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
+              </div>
+            </article>
 
-          <article class="model-card">
-            <img class="model-card__img" src="assets/images/roadster.jpg" alt="Tesla Roadster" />
-            <div class="model-card__body">
-              <h3 class="h5">Roadster</h3>
-              <p>Цахилгаан спорт машин. Маш хурдан хурдатгалтай, хоёр хаалгатай, задгай дээвэртэй загвар юм.</p>
+            <article class="model-card card" data-reveal style="--rd:180ms">
+              <img class="model-card__img" src="assets/images/cybertruck.jpg" alt="Tesla Cybertruck" />
+              <div class="model-card__body">
+                <h3 class="h5">Cybertruck</h3>
+                <p>Зэвэрдэггүй гангаар хийсэн футурист дизайнтай, бат бөх бөгөөд замгүй газар явахад зориулагдсан.</p>
+              </div>
+              <div class="actions actions--center">
+                <a href="#" class="btn btn--secondary">Одоо захиалах</a>
+                <a href="#cybertruck" class="btn btn--link">Дэлгэрэнгүй <img class="icon" src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
+              </div>
+            </article>
+
+            <article class="model-card card" data-reveal style="--rd:270ms">
+              <img class="model-card__img" src="assets/images/roadster.jpg" alt="Tesla Roadster" />
+              <div class="model-card__body">
+                <h3 class="h5">Roadster</h3>
+                <p>Цахилгаан спорт машин. Маш хурдан хурдатгалтай, хоёр хаалгатай, задгай дээвэртэй загвар юм.</p>
+              </div>
+              <div class="actions actions--center">
+                <a href="#" class="btn btn--secondary">Одоо захиалах</a>
+                <a href="#roadster" class="btn btn--link">Дэлгэрэнгүй <img class="icon" src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Green loan logos -->
+      <section class="logos-section" data-reveal>
+        <h2 class="logos-section__title">Ногоон зээлээр авах боломж</h2>
+        <div class="logos-strip">
+          <span class="bank-chip"><img src="assets/images/bank-logo-1.png" alt="Golomt Bank" /></span>
+          <span class="bank-chip"><img src="assets/images/bank-logo-2.png" alt="TDB" /></span>
+          <span class="bank-chip"><img src="assets/images/bank-logo-3.png" alt="M Bank" /></span>
+          <span class="bank-chip"><img src="assets/images/bank-logo-1.png" alt="Golomt Bank" /></span>
+          <span class="bank-chip"><img src="assets/images/bank-logo-2.png" alt="TDB" /></span>
+          <span class="bank-chip"><img src="assets/images/bank-logo-3.png" alt="M Bank" /></span>
+          <span class="bank-chip"><img src="assets/images/bank-logo-1.png" alt="Golomt Bank" /></span>
+        </div>
+      </section>
+
+      <!-- Model 3 -->
+      <section class="section" id="model-3">
+        <div class="container">
+          <article class="feature-card" data-reveal>
+            <div class="feature-card__media">
+              <img src="assets/images/feature-model-3.jpg" alt="Tesla Model 3" />
             </div>
-            <div class="actions actions--center">
-              <a href="#" class="btn btn--secondary">Одоо захиалах</a>
-              <a href="#roadster" class="btn btn--link">Дэлгэрэнгүй <img src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
+            <div class="feature-card__content">
+              <div class="feature-card__text">
+                <p class="tagline">Tesla-Tsetsen</p>
+                <h2 class="h2">Model 3</h2>
+                <p>Model 3 нь Tesla-гийн спорт седан маягийн цахилгаан машин. Tesla-гийн хамгийн хямд загваруудын нэг бөгөөд хурдан, хэмнэлттэй.</p>
+                <p>Tа сард $439-өөс эхлэн түрээслэх, эсвэл жилийн 1.99% хүүтэй зээлээр авах боломжтой.</p>
+              </div>
+              <div class="partner-logos">
+                <img class="icon" src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
+                <img class="icon" src="assets/icons/webflow-logo-2.svg" width="120" height="48" alt="Relume" />
+                <img class="icon" src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
+              </div>
+              <div class="actions">
+                <a href="#" class="btn btn--secondary">Зээл судлах</a>
+                <a href="#" class="btn btn--link">Дэлгэрэнгүй <img class="icon" src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
+              </div>
             </div>
           </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Green loan logos -->
-    <section class="logos-section">
-      <h2 class="logos-section__title">Ногоон зээлээр авах боломж</h2>
-      <div class="logos-strip">
-        <img src="assets/images/bank-logo-1.png" alt="Golomt Bank" />
-        <img src="assets/images/bank-logo-2.png" alt="TDB" />
-        <img src="assets/images/bank-logo-3.png" alt="M Bank" />
-        <img src="assets/images/bank-logo-1.png" alt="Golomt Bank" />
-        <img src="assets/images/bank-logo-2.png" alt="TDB" />
-        <img src="assets/images/bank-logo-3.png" alt="M Bank" />
-        <img src="assets/images/bank-logo-1.png" alt="Golomt Bank" />
-      </div>
-    </section>
+      <!-- Model Y -->
+      <section class="section" id="model-y">
+        <div class="container">
+          <article class="feature-card feature-card--reverse" data-reveal>
+            <div class="feature-card__media feature-card__media--video">
+              <img src="assets/images/lightbox.png" alt="" />
+              <button class="play-btn" type="button" aria-label="Model Y видео тоглуулах">
+                <img src="assets/icons/play.svg" width="64" height="64" alt="" />
+              </button>
+            </div>
+            <div class="feature-card__content">
+              <div class="feature-card__text">
+                <h2 class="h2">Model Y</h2>
+                <p>Model Y нь Tesla-гийн дунд оврын SUV цахилгаан машин. Model 3-аас илүү өндөр, ачаа тээш, зорчигчдод илүү зайтай тул гэр бүлд тохиромжтой.</p>
+                <p>Tа сард $499-өөс эхлэн түрээслэх, эсвэл жилийн 2.49% хүүтэй зээлээр авах боломжтой. Мөн урт тэнхлэгтэй, илүү том Model Y L Premium хувилбар $61,990-аас эхэлдэг.</p>
+              </div>
+              <div class="partner-logos">
+                <img class="icon" src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
+                <img class="icon" src="assets/icons/webflow-logo-2.svg" width="120" height="48" alt="Relume" />
+                <img class="icon" src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
+              </div>
+              <div class="actions">
+                <a href="#" class="btn btn--secondary">Зээл судлах</a>
+                <a href="#" class="btn btn--link">Дэлгэрэнгүй <img class="icon" src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
 
-    <!-- Model 3 -->
-    <section class="section section--gray" id="model-3">
-      <div class="container">
-        <article class="feature-card">
-          <div class="feature-card__media">
-            <img src="assets/images/feature-model-3.jpg" alt="Tesla Model 3" />
+      <!-- Cybertruck -->
+      <section class="section" id="cybertruck">
+        <div class="container">
+          <article class="feature-card" data-reveal>
+            <div class="feature-card__media">
+              <img src="assets/images/feature-cybertruck.jpg" alt="Tesla Cybertruck" />
+            </div>
+            <div class="feature-card__content">
+              <div class="feature-card__text">
+                <p class="tagline">Tesla-Tsetsen</p>
+                <h2 class="h2">Cybertruck</h2>
+                <p>Cybertruck нь Tesla-гийн цахилгаан пикап буюу ачааны машин. Зэвэрдэггүй гангаар хийсэн хурц өнцөгтэй футурист дизайнтай, бат бөх бөгөөд замгүй газар явахад зориулагдсан.</p>
+                <p>Tа сард $1,129-өөс эхлэн түрээслэх боломжтой.</p>
+              </div>
+              <div class="partner-logos">
+                <img class="icon" src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
+                <img class="icon" src="assets/icons/webflow-logo-2.svg" width="120" height="48" alt="Relume" />
+                <img class="icon" src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
+              </div>
+              <div class="actions">
+                <a href="#" class="btn btn--secondary">Зээл судлах</a>
+                <a href="#" class="btn btn--link">Дэлгэрэнгүй <img class="icon" src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Roadster -->
+      <section class="section" id="roadster">
+        <div class="container">
+          <article class="feature-card feature-card--reverse" data-reveal>
+            <div class="feature-card__media feature-card__media--video">
+              <img src="assets/images/lightbox.png" alt="" />
+              <button class="play-btn" type="button" aria-label="Roadster видео тоглуулах">
+                <img src="assets/icons/play.svg" width="64" height="64" alt="" />
+              </button>
+            </div>
+            <div class="feature-card__content">
+              <div class="feature-card__text">
+                <h2 class="h2">Roadster</h2>
+                <p>Roadster нь Tesla-гийн цахилгаан спорт машин. Маш хурдан хурдатгалтай, хоёр хаалгатай, задгай дээвэртэй загвар юм.</p>
+                <p>Tesla Roadster-н “Reserve Now” буюу урьдчилан захиалах боломжтой. Тиймээс одоогоор худалдаанд гараагүй, захиалга авч байгаа шатандаа байна.</p>
+              </div>
+              <div class="partner-logos">
+                <img class="icon" src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
+                <img class="icon" src="assets/icons/webflow-logo-2.svg" width="120" height="48" alt="Relume" />
+                <img class="icon" src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
+              </div>
+              <div class="actions">
+                <a href="#" class="btn btn--secondary">Урьдчилан захиалга</a>
+                <a href="#" class="btn btn--link">Дэлгэрэнгүй <img class="icon" src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Robotaxi gallery -->
+      <section class="section" id="robotaxi">
+        <div class="container gallery">
+          <div class="gallery__title">
+            <h2 class="h2" data-reveal>Robotaxi үйлчилгээ</h2>
+            <p data-reveal style="--rd:90ms">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
-          <div class="feature-card__content">
-            <div class="feature-card__text">
-              <p class="tagline">Tesla-Tsetsen</p>
-              <h2 class="h2">Model 3</h2>
-              <p>Model 3 нь Tesla-гийн спорт седан маягийн цахилгаан машин. Tesla-гийн хамгийн хямд загваруудын нэг бөгөөд хурдан, хэмнэлттэй.</p>
-              <p>Tа сард $439-өөс эхлэн түрээслэх, эсвэл жилийн 1.99% хүүтэй зээлээр авах боломжтой.</p>
-            </div>
-            <div class="partner-logos">
-              <img src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
-              <img src="assets/icons/webflow-logo-2.svg" width="120" height="48" alt="Relume" />
-              <img src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
-            </div>
-            <div class="actions">
-              <a href="#" class="btn btn--secondary">Зээл судлах</a>
-              <a href="#" class="btn btn--link">Дэлгэрэнгүй <img src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
 
-    <!-- Model Y -->
-    <section class="section section--gray" id="model-y">
-      <div class="container">
-        <article class="feature-card feature-card--reverse">
-          <div class="feature-card__media feature-card__media--video">
-            <img src="assets/images/lightbox.png" alt="" />
-            <button class="play-btn" type="button" aria-label="Model Y видео тоглуулах">
-              <img src="assets/icons/play.svg" width="64" height="64" alt="" />
+          <div class="slider" data-slider data-reveal style="--rd:180ms">
+            <div class="slider__viewport">
+              <div class="slider__track">
+                <div class="slider__slide"><img src="assets/images/hero.jpg" alt="Robotaxi зураг 1" /></div>
+                <div class="slider__slide"><img src="assets/images/gallery-2.jpg" alt="Robotaxi зураг 2" /></div>
+                <div class="slider__slide"><img src="assets/images/gallery-3.jpg" alt="Robotaxi зураг 3" /></div>
+              </div>
+            </div>
+            <button class="slider__arrow slider__arrow--prev" type="button" aria-label="Өмнөх зураг">
+              <img class="icon" src="assets/icons/arrow-back.svg" width="24" height="24" alt="" />
             </button>
-          </div>
-          <div class="feature-card__content">
-            <div class="feature-card__text">
-              <h2 class="h2">Model Y</h2>
-              <p>Model Y нь Tesla-гийн дунд оврын SUV цахилгаан машин. Model 3-аас илүү өндөр, ачаа тээш, зорчигчдод илүү зайтай тул гэр бүлд тохиромжтой.</p>
-              <p>Tа сард $499-өөс эхлэн түрээслэх, эсвэл жилийн 2.49% хүүтэй зээлээр авах боломжтой. Мөн урт тэнхлэгтэй, илүү том Model Y L Premium хувилбар $61,990-аас эхэлдэг.</p>
-            </div>
-            <div class="partner-logos">
-              <img src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
-              <img src="assets/icons/webflow-logo-2.svg" width="120" height="48" alt="Relume" />
-              <img src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
-            </div>
-            <div class="actions">
-              <a href="#" class="btn btn--secondary">Зээл судлах</a>
-              <a href="#" class="btn btn--link">Дэлгэрэнгүй <img src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Cybertruck -->
-    <section class="section section--gray" id="cybertruck">
-      <div class="container">
-        <article class="feature-card">
-          <div class="feature-card__media">
-            <img src="assets/images/feature-cybertruck.jpg" alt="Tesla Cybertruck" />
-          </div>
-          <div class="feature-card__content">
-            <div class="feature-card__text">
-              <p class="tagline">Tesla-Tsetsen</p>
-              <h2 class="h2">Cybertruck</h2>
-              <p>Cybertruck нь Tesla-гийн цахилгаан пикап буюу ачааны машин. Зэвэрдэггүй гангаар хийсэн хурц өнцөгтэй футурист дизайнтай, бат бөх бөгөөд замгүй газар явахад зориулагдсан.</p>
-              <p>Tа сард $1,129-өөс эхлэн түрээслэх боломжтой.</p>
-            </div>
-            <div class="partner-logos">
-              <img src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
-              <img src="assets/icons/webflow-logo-2.svg" width="120" height="48" alt="Relume" />
-              <img src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
-            </div>
-            <div class="actions">
-              <a href="#" class="btn btn--secondary">Зээл судлах</a>
-              <a href="#" class="btn btn--link">Дэлгэрэнгүй <img src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Roadster -->
-    <section class="section section--gray" id="roadster">
-      <div class="container">
-        <article class="feature-card feature-card--reverse">
-          <div class="feature-card__media feature-card__media--video">
-            <img src="assets/images/lightbox.png" alt="" />
-            <button class="play-btn" type="button" aria-label="Roadster видео тоглуулах">
-              <img src="assets/icons/play.svg" width="64" height="64" alt="" />
+            <button class="slider__arrow slider__arrow--next" type="button" aria-label="Дараагийн зураг">
+              <img class="icon" src="assets/icons/arrow-forward.svg" width="24" height="24" alt="" />
             </button>
-          </div>
-          <div class="feature-card__content">
-            <div class="feature-card__text">
-              <h2 class="h2">Roadster</h2>
-              <p>Roadster нь Tesla-гийн цахилгаан спорт машин. Маш хурдан хурдатгалтай, хоёр хаалгатай, задгай дээвэртэй загвар юм.</p>
-              <p>Tesla Roadster-н “Reserve Now” буюу урьдчилан захиалах боломжтой. Тиймээс одоогоор худалдаанд гараагүй, захиалга авч байгаа шатандаа байна.</p>
+            <div class="slider__dots" role="tablist">
+              <button class="slider__dot is-active" type="button" aria-label="1-р зураг"></button>
+              <button class="slider__dot" type="button" aria-label="2-р зураг"></button>
+              <button class="slider__dot" type="button" aria-label="3-р зураг"></button>
             </div>
-            <div class="partner-logos">
-              <img src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
-              <img src="assets/icons/webflow-logo-2.svg" width="120" height="48" alt="Relume" />
-              <img src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
-            </div>
-            <div class="actions">
-              <a href="#" class="btn btn--secondary">Урьдчилан захиалга</a>
-              <a href="#" class="btn btn--link">Дэлгэрэнгүй <img src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Robotaxi gallery -->
-    <section class="section section--gray" id="robotaxi">
-      <div class="container gallery">
-        <div class="gallery__title">
-          <h2 class="h2">Robotaxi үйлчилгээ</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-
-        <div class="slider" data-slider>
-          <div class="slider__viewport">
-            <div class="slider__track">
-              <div class="slider__slide"><img src="assets/images/hero.jpg" alt="Robotaxi зураг 1" /></div>
-              <div class="slider__slide"><img src="assets/images/gallery-2.jpg" alt="Robotaxi зураг 2" /></div>
-              <div class="slider__slide"><img src="assets/images/gallery-3.jpg" alt="Robotaxi зураг 3" /></div>
-            </div>
-          </div>
-          <button class="slider__arrow slider__arrow--prev" type="button" aria-label="Өмнөх зураг">
-            <img src="assets/icons/arrow-back.svg" width="24" height="24" alt="" />
-          </button>
-          <button class="slider__arrow slider__arrow--next" type="button" aria-label="Дараагийн зураг">
-            <img src="assets/icons/arrow-forward.svg" width="24" height="24" alt="" />
-          </button>
-          <div class="slider__dots" role="tablist">
-            <button class="slider__dot is-active" type="button" aria-label="1-р зураг"></button>
-            <button class="slider__dot" type="button" aria-label="2-р зураг"></button>
-            <button class="slider__dot" type="button" aria-label="3-р зураг"></button>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <!-- Footer -->
-  <footer class="footer" id="contact">
-    <div class="container">
-      <div class="footer__top">
-        <div class="footer__newsletter">
-          <a href="#" class="logo" aria-label="Tesla-Tsetsen">
-            <img src="assets/icons/tesla-wordmark.svg" width="140" height="14" alt="Tesla" />
-          </a>
-          <p>Бидэнтэй хамт байгаарай</p>
-          <form class="newsletter-form" onsubmit="event.preventDefault()">
-            <div class="newsletter-form__row">
-              <label class="visually-hidden" for="email">Имэйл</label>
-              <input id="email" type="email" placeholder="Enter your email" required />
-              <button type="submit" class="btn btn--secondary">Subscribe</button>
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer__top">
+          <div class="footer__newsletter" data-reveal>
+            <a href="#top" class="logo" aria-label="Tesla-Tsetsen">
+              <img src="assets/icons/tesla-wordmark.svg" width="140" height="14" alt="Tesla" />
+            </a>
+            <p>Бидэнтэй хамт байгаарай</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault()">
+              <div class="newsletter-form__row">
+                <label class="visually-hidden" for="email">Имэйл</label>
+                <input id="email" type="email" placeholder="Enter your email" required />
+                <button type="submit" class="btn btn--primary">Subscribe</button>
+              </div>
+              <p class="newsletter-form__note">Та имэйл бүртгүүлж мэдээлэл аваарай.</p>
+            </form>
+          </div>
+
+          <div class="footer__links">
+            <div class="footer__col" data-reveal style="--rd:80ms">
+              <h4>Загварууд</h4>
+              <ul>
+                <li><a href="#model-3">Model 3</a></li>
+                <li><a href="#cybertruck">Cybertruck</a></li>
+                <li><a href="#roadster">Roadster</a></li>
+                <li><a href="#robotaxi">Robotaxi</a></li>
+                <li><a href="#test-drive">Test drive</a></li>
+              </ul>
             </div>
-            <p class="newsletter-form__note">Та имэйл бүртгүүлж мэдээлэл аваарай.</p>
-          </form>
-        </div>
-
-        <div class="footer__links">
-          <div class="footer__col">
-            <h4>Загварууд</h4>
-            <ul>
-              <li><a href="#model-3">Model 3</a></li>
-              <li><a href="#cybertruck">Cybertruck</a></li>
-              <li><a href="#roadster">Roadster</a></li>
-              <li><a href="#robotaxi">Robotaxi</a></li>
-              <li><a href="#test-drive">Test drive</a></li>
-            </ul>
-          </div>
-          <div class="footer__col">
-            <h4>Компани</h4>
-            <ul>
-              <li><a href="#">Бидний тухай</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Investors</a></li>
-              <li><a href="#">News</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-          <div class="footer__col">
-            <h4>Follow us</h4>
-            <ul class="social">
-              <li><a href="#"><img src="assets/icons/facebook.svg" width="24" height="24" alt="" />Facebook</a></li>
-              <li><a href="#"><img src="assets/icons/instagram.svg" width="24" height="24" alt="" />Instagram</a></li>
-              <li><a href="#"><img src="assets/icons/x.svg" width="24" height="24" alt="" />X</a></li>
-              <li><a href="#"><img src="assets/icons/linkedin.svg" width="24" height="24" alt="" />LinkedIn</a></li>
-              <li><a href="#"><img src="assets/icons/youtube.svg" width="24" height="24" alt="" />Youtube</a></li>
-            </ul>
+            <div class="footer__col" data-reveal style="--rd:160ms">
+              <h4>Компани</h4>
+              <ul>
+                <li><a href="#">Бидний тухай</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Investors</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+            <div class="footer__col" data-reveal style="--rd:240ms">
+              <h4>Follow us</h4>
+              <ul class="social">
+                <li><a href="#"><img class="icon" src="assets/icons/facebook.svg" width="24" height="24" alt="" />Facebook</a></li>
+                <li><a href="#"><img class="icon" src="assets/icons/instagram.svg" width="24" height="24" alt="" />Instagram</a></li>
+                <li><a href="#"><img class="icon" src="assets/icons/x.svg" width="24" height="24" alt="" />X</a></li>
+                <li><a href="#"><img class="icon" src="assets/icons/linkedin.svg" width="24" height="24" alt="" />LinkedIn</a></li>
+                <li><a href="#"><img class="icon" src="assets/icons/youtube.svg" width="24" height="24" alt="" />Youtube</a></li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="footer__credits">
-        <img class="footer__divider" src="assets/icons/divider.svg" alt="" />
         <div class="footer__bottom">
           <p>© 2025 Tesla-Tsetsen. All rights reserved.</p>
           <div class="footer__legal">
@@ -338,9 +348,693 @@
           </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 
   <script src="script.js"></script>
+  <!-- WebGL planet scene (inline module so it also works when opened via file://) -->
+  <script type="module">
+// WebGL planet scene — fixed behind the page, choreographed by scroll progress.
+import * as THREE from 'three';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
+import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader.js';
+import { CopyShader } from 'three/examples/jsm/shaders/CopyShader.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ---------- Assets ----------
+const ASSET_BASE_URL = 'https://api.getlayers.ai/storage/v1/object/public/public/assets/ascend-d9857ad1f2';
+const PLANET_GLB = `${ASSET_BASE_URL}/planet.glb`;
+const PLANET_LIGHTS_GLB = `${ASSET_BASE_URL}/planet-lights.glb`;
+const PLANET_CLOUDS_PNG = `${ASSET_BASE_URL}/planet-clouds.png`;
+
+// ---------- Config ----------
+const CONFIG = {
+  rimColor:'#c1faff', rimPower:2.4, nightLights:10, terrainDepth:0.33, terrainShade:1.3,
+  oceanGlint:0.45, oceanDeep:0.12, oceanFlow:3, oceanFlowSpeed:0.8, oceanFlowScale:2.1,
+  glowColor:'#3a6cff', glowIntensity:3.35, planetRadius:1.95, spin:0.03, initRotation:2.07,
+  tilt:0.37, autoRotate:0,
+  cloud1Height:1.005, cloud1Opacity:0.6, cloud1Spin:0.06,
+  cloud2Height:1.03, cloud2Opacity:0.5, cloud2Spin:0.14,
+  cloud3Height:1.075, cloud3Opacity:0.5, cloud3Spin:0.1,
+  bgColor:'#040a1e', flameColor:'#3a6cff', flameColor2:'#c1faff', flameAmt:0.15,
+  atmoColor:'#9fc4ff', atmoCount:320, atmoSize:22, atmoSpeed:0.8,
+  starColor:'#cfe0ff', starCount:1400, starSize:1.6, starFlicker:1,
+  markerColor:'#ffd27a', markerCount:60, markerSize:16, markerSpeed:0.5,
+};
+const LAYERS = { NONE:0, TORUS_SCENE:1, BLOOM_SCENE:2, ENTIRE_SCENE:3 };
+
+const STOPS_X = [{p:0,v:0},{p:0.32,v:-3.1},{p:0.64,v:3.2},{p:1,v:0}];
+const STOPS_Y = [{p:0,v:-4.5},{p:0.32,v:0.55},{p:0.64,v:0.45},{p:1,v:0.15}];
+const STOPS_S = [{p:0,v:2.15},{p:0.32,v:1.0},{p:0.64,v:0.92},{p:1,v:1.12}];
+const ENTRY_DUR = 1.9;
+const ENTRY_START_Y = -6.5;
+
+// ---------- Helpers ----------
+const Lerp = (a, b, t) => a + (b - a) * t;
+const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+function hexToVec3(hex) {
+  const c = new THREE.Color(hex);
+  return new THREE.Vector3(c.r, c.g, c.b);
+}
+function sample(stops, p) {
+  if (p <= stops[0].p) return stops[0].v;
+  for (let i = 0; i < stops.length - 1; i++) {
+    const a = stops[i], b = stops[i + 1];
+    if (p <= b.p) {
+      let t = (p - a.p) / (b.p - a.p);
+      t = t * t * (3 - 2 * t);
+      return Lerp(a.v, b.v, t);
+    }
+  }
+  return stops[stops.length - 1].v;
+}
+function setLayers(obj, ...layers) {
+  obj.traverse(o => {
+    o.layers.set(layers[0]);
+    for (let i = 1; i < layers.length; i++) o.layers.enable(layers[i]);
+  });
+}
+function firstMesh(root) {
+  let found = null;
+  root.traverse(o => { if (!found && o.isMesh) found = o; });
+  return found;
+}
+
+// ---------- Shared simplex noise ----------
+const SNOISE = /* glsl */`
+vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
+vec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}
+float snoise(vec3 v){
+  const vec2 C = vec2(1.0/6.0, 1.0/3.0); const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
+  vec3 i = floor(v + dot(v, C.yyy)); vec3 x0 = v - i + dot(i, C.xxx);
+  vec3 g = step(x0.yzx, x0.xyz); vec3 l = 1.0 - g;
+  vec3 i1 = min(g.xyz, l.zxy); vec3 i2 = max(g.xyz, l.zxy);
+  vec3 x1 = x0 - i1 + 1.0 * C.xxx; vec3 x2 = x0 - i2 + 2.0 * C.xxx; vec3 x3 = x0 - 1.0 + 3.0 * C.xxx;
+  i = mod(i, 289.0);
+  vec4 p = permute(permute(permute(i.z + vec4(0.0, i1.z, i2.z, 1.0)) + i.y + vec4(0.0, i1.y, i2.y, 1.0)) + i.x + vec4(0.0, i1.x, i2.x, 1.0));
+  float n_ = 1.0/7.0; vec3 ns = n_ * D.wyz - D.xzx;
+  vec4 j = p - 49.0 * floor(p * ns.z *ns.z);
+  vec4 x_ = floor(j * ns.z); vec4 y_ = floor(j - 7.0 * x_);
+  vec4 x = x_ *ns.x + ns.yyyy; vec4 y = y_ *ns.x + ns.yyyy; vec4 h = 1.0 - abs(x) - abs(y);
+  vec4 b0 = vec4(x.xy, y.xy); vec4 b1 = vec4(x.zw, y.zw);
+  vec4 s0 = floor(b0)*2.0 + 1.0; vec4 s1 = floor(b1)*2.0 + 1.0; vec4 sh = -step(h, vec4(0.0));
+  vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy; vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww;
+  vec3 p0 = vec3(a0.xy,h.x); vec3 p1 = vec3(a0.zw,h.y); vec3 p2 = vec3(a1.xy,h.z); vec3 p3 = vec3(a1.zw,h.w);
+  vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));
+  p0 *= norm.x; p1 *= norm.y; p2 *= norm.z; p3 *= norm.w;
+  vec4 m = max(0.5 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0); m = m * m;
+  return 42.0 * dot(m*m, vec4(dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3)));
+}
+`;
+
+// ---------- Renderer / scene / camera ----------
+const canvas = document.querySelector('.planet-canvas');
+const renderer = new THREE.WebGL1Renderer({ canvas, antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(window.innerWidth, window.innerHeight, false);
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.VSMShadowMap;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x000000);
+
+const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 200);
+camera.position.set(0, 0, 8);
+camera.layers.enable(LAYERS.TORUS_SCENE);
+camera.layers.enable(LAYERS.BLOOM_SCENE);
+camera.layers.enable(LAYERS.ENTIRE_SCENE);
+scene.add(camera);
+
+const ambient = new THREE.AmbientLight(0xffffff, 1.8);
+ambient.layers.set(LAYERS.ENTIRE_SCENE);
+scene.add(ambient);
+const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+dirLight.position.set(0, 10, 2);
+dirLight.layers.set(LAYERS.ENTIRE_SCENE);
+scene.add(dirLight);
+
+// Shared resolution uniform (drawing-buffer pixels)
+const resVec = new THREE.Vector2();
+renderer.getDrawingBufferSize(resVec);
+
+// ---------- Final composite pass ----------
+const FinalPass = {
+  uniforms: {
+    iTime:{value:0}, tDiffuse:{value:null}, torusTexture:{value:null}, bloomTexture:{value:null}, haloTexture:{value:null},
+    uBg:{value:hexToVec3(CONFIG.bgColor)}, uFlameA:{value:hexToVec3(CONFIG.flameColor)},
+    uFlameB:{value:hexToVec3(CONFIG.flameColor2)}, uFlameAmt:{value:CONFIG.flameAmt},
+  },
+  vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position, 1.0); }`,
+  fragmentShader: `
+    uniform float iTime; uniform sampler2D tDiffuse; uniform sampler2D bloomTexture; uniform sampler2D torusTexture; uniform sampler2D haloTexture;
+    uniform vec3 uBg; uniform vec3 uFlameA; uniform vec3 uFlameB; uniform float uFlameAmt;
+    varying vec2 vUv;
+    vec3 warp3d(vec3 pos, float t){ float curv=.8,a=1.9,b=0.7; pos*=2.;
+      pos.x+=curv*sin(t+a*pos.y)+t*b; pos.y+=curv*cos(t+a*pos.x);
+      pos.y+=curv*sin(t+a*pos.z)+t*b; pos.z+=curv*cos(t+a*pos.y);
+      pos.z+=curv*sin(t+a*pos.x)+t*b; pos.x+=curv*cos(t+a*pos.z);
+      return 0.5+0.5*cos(pos.xyz+vec3(1,2,4)); }
+    void main(){
+      vec2 uv = 2.*vUv - 1.;
+      vec3 w = pow(warp3d(vec3(uv.x, sin(uv.y), uv.y), iTime*1.5), vec3(1.5));
+      vec3 flame = 1.5*uFlameA*w.x; flame*=w.y; flame += uFlameB*w.z;
+      flame *= smoothstep(0.25, 1., abs(uv.y));
+      float md = smoothstep(-0.7, 1., -uv.y*uv.x); flame *= md*md;
+      vec3 bg = uBg * (1.0 - 0.4 * length(uv));
+      vec3 halo = texture2D(haloTexture, vUv).xyz;
+      gl_FragColor = vec4(bg + flame*uFlameAmt + texture2D(bloomTexture, vUv).xyz + texture2D(torusTexture, vUv).xyz + texture2D(tDiffuse, vUv).xyz + halo, 1.);
+    }`,
+};
+
+// ---------- Composers ----------
+const W = window.innerWidth, H = window.innerHeight;
+
+const torusComposer = new EffectComposer(renderer);
+torusComposer.renderToScreen = false;
+torusComposer.addPass(new RenderPass(scene, camera));
+torusComposer.addPass(new ShaderPass(GammaCorrectionShader));
+torusComposer.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), 0.22, 0.2, 0));
+torusComposer.addPass(new ShaderPass(CopyShader));
+
+const bloomComposer = new EffectComposer(renderer);
+bloomComposer.renderToScreen = false;
+bloomComposer.addPass(new RenderPass(scene, camera));
+bloomComposer.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), 0.5, 0.6, 0));
+bloomComposer.addPass(new ShaderPass(GammaCorrectionShader));
+
+const finalComposer = new EffectComposer(renderer);
+finalComposer.addPass(new RenderPass(scene, camera));
+const finalPass = new ShaderPass(FinalPass);
+finalPass.uniforms.bloomTexture.value = bloomComposer.renderTarget1.texture;
+finalPass.uniforms.torusTexture.value = torusComposer.renderTarget1.texture;
+finalComposer.addPass(finalPass);
+
+// ---------- Controls (never captures input) ----------
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.enablePan = false;
+controls.enabled = false;
+controls.autoRotate = true;
+controls.autoRotateSpeed = CONFIG.autoRotate;
+controls.minDistance = 3.5;
+controls.maxDistance = 16;
+controls.target.set(0, 0, 0);
+
+// ---------- Groups ----------
+const worldGroup = new THREE.Group();
+const planetGroup = new THREE.Group();
+planetGroup.rotation.z = CONFIG.tilt;
+const cloudGroup = new THREE.Group();
+cloudGroup.rotation.z = CONFIG.tilt;
+cloudGroup.visible = false;
+worldGroup.add(planetGroup, cloudGroup);
+worldGroup.position.set(STOPS_X[0].v, STOPS_Y[0].v, 0);
+worldGroup.scale.setScalar(STOPS_S[0].v);
+scene.add(worldGroup);
+
+// Shared time uniforms
+const planetTime = { value: 0 };
+const cloudTime = { value: 0 };
+const starTime = { value: 0 };
+const markerTime = { value: 0 };
+
+// ---------- Atmosphere halo ----------
+const glowMat = new THREE.ShaderMaterial({
+  uniforms: { uGlow: { value: hexToVec3(CONFIG.glowColor) }, uIntensity: { value: CONFIG.glowIntensity } },
+  vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
+  fragmentShader: `
+    uniform vec3 uGlow; uniform float uIntensity; varying vec2 vUv;
+    void main(){
+      float d = length(vUv - 0.5) * 2.0;
+      float a = pow(clamp(1.0 - d, 0.0, 1.0), 2.2);
+      gl_FragColor = vec4(uGlow * a * uIntensity, a);
+    }`,
+  transparent: true, side: THREE.DoubleSide, depthWrite: false, blending: THREE.AdditiveBlending,
+});
+const glowMesh = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), glowMat);
+glowMesh.scale.setScalar(CONFIG.planetRadius * 2.3);
+glowMesh.visible = false;
+worldGroup.add(glowMesh);
+setLayers(glowMesh, LAYERS.ENTIRE_SCENE);
+
+// ---------- Cloud shells ----------
+const cloudTex = new THREE.TextureLoader().load(PLANET_CLOUDS_PNG);
+cloudTex.wrapS = cloudTex.wrapT = THREE.RepeatWrapping;
+cloudTex.repeat.set(5, 5);
+const cloudLayers = [
+  { h: CONFIG.cloud1Height, o: CONFIG.cloud1Opacity, spinKey: 'cloud1Spin', ry: 0.0, phase: 0.0 },
+  { h: CONFIG.cloud2Height, o: CONFIG.cloud2Opacity, spinKey: 'cloud2Spin', ry: 2.2, phase: 13.0 },
+  { h: CONFIG.cloud3Height, o: CONFIG.cloud3Opacity, spinKey: 'cloud3Spin', ry: 4.3, phase: 27.0 },
+];
+const cloudMeshes = [];
+cloudLayers.forEach((layer, idx) => {
+  const geo = new THREE.SphereGeometry(CONFIG.planetRadius * layer.h, 64, 64);
+  const mat = new THREE.MeshStandardMaterial({ map: cloudTex, transparent: true, depthWrite: false });
+  const u = {
+    uTime: cloudTime, noiseScale: { value: 20 }, uSpeedX: { value: 1 }, uSpeedY: { value: 2 }, uSpeedZ: { value: 2 },
+    uOpacity: { value: layer.o }, uPhase: { value: layer.phase },
+  };
+  mat.onBeforeCompile = (shader) => {
+    Object.assign(shader.uniforms, u);
+    shader.vertexShader = 'varying vec2 vCloudUv;\n' + shader.vertexShader.replace('void main() {', 'void main() {\n  vCloudUv = uv;');
+    shader.fragmentShader = `
+uniform float uTime; uniform float noiseScale; uniform float uSpeedX; uniform float uSpeedY; uniform float uSpeedZ;
+uniform float uOpacity; uniform float uPhase;
+varying vec2 vCloudUv;
+${SNOISE}
+` + shader.fragmentShader.replace('#include <dithering_fragment>', `
+#include <dithering_fragment>
+gl_FragColor.rgb = vec3(1.0);
+float cloudNoise = snoise(vec3(vCloudUv.x * noiseScale + uTime * uSpeedX + uPhase, vCloudUv.y * noiseScale - uTime * uSpeedY + uPhase, uTime * uSpeedZ + uPhase));
+float cloudNdv = max(dot(normalize(vNormal), normalize(vViewPosition)), 0.0);
+float cloudEdge = pow(1.0 - cloudNdv, 3.0);
+float cloudMod = mix(cloudNoise, 1.0, cloudEdge);
+float cloudNdl = dot(normalize(vNormal), normalize(vec3(-0.9, 0.18, 0.4)));
+float cloudDay = 1.0 - smoothstep(0.30, -0.30, cloudNdl) * 0.9;
+gl_FragColor.a *= cloudMod * uOpacity * cloudDay;
+`);
+  };
+  mat.customProgramCacheKey = () => 'ascend-cloud-' + idx;
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.rotation.y = layer.ry;
+  mesh.renderOrder = 2;
+  mesh.userData.spinKey = layer.spinKey;
+  cloudGroup.add(mesh);
+  cloudMeshes.push(mesh);
+});
+setLayers(cloudGroup, LAYERS.ENTIRE_SCENE);
+
+// ---------- Ambient atmosphere motes ----------
+{
+  const n = CONFIG.atmoCount;
+  const pos = new Float32Array(n * 3), size = new Float32Array(n), seed = new Float32Array(n);
+  for (let i = 0; i < n; i++) {
+    pos[i * 3] = Math.random() * 2 - 1;
+    pos[i * 3 + 1] = Math.random() * 2 - 1;
+    pos[i * 3 + 2] = Math.random() * 2 - 1;
+    size[i] = CONFIG.atmoSize * (0.4 + Math.random());
+    seed[i] = Math.random();
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  geo.setAttribute('size', new THREE.BufferAttribute(size, 1));
+  geo.setAttribute('seed', new THREE.BufferAttribute(seed, 1));
+  const mat = new THREE.ShaderMaterial({
+    uniforms: { uTime: { value: 0 }, uRes: { value: resVec }, uColor: { value: hexToVec3(CONFIG.atmoColor) } },
+    vertexShader: `
+      attribute float size; attribute float seed; uniform float uTime; uniform vec2 uRes;
+      varying float vA;
+      vec3 warp(vec3 p, float t){ float c=0.9,a=1.9,b=0.02,s=0.05; p*=2.;
+        p.x+=c*sin(s*t+a*p.y)+t*b; p.y+=c*cos(s*t+a*p.x); p.y+=c*sin(s*t+a*p.z)+t*b;
+        p.z+=c*cos(s*t+a*p.y); p.z+=c*sin(s*t+a*p.x)+t*b; p.x+=c*cos(s*t+a*p.z);
+        return cos(p+vec3(1,2,4)); }
+      void main(){
+        vec3 v = position*4.0 + warp(position, uTime)*1.2;
+        vec4 mv = modelViewMatrix * vec4(v, 1.0);
+        float r = length(v); float farF = 1.0 - smoothstep(5.0, 6.5, r); float nearF = smoothstep(0.0, 0.5, -mv.z);
+        vA = farF * nearF;
+        gl_PointSize = size * uRes.y / 900.0 / -mv.z; gl_PointSize = max(gl_PointSize, 1.0);
+        gl_Position = projectionMatrix * mv;
+      }`,
+    fragmentShader: `
+      uniform vec3 uColor; varying float vA;
+      void main(){ vec2 p = gl_PointCoord - 0.5; float l = length(p); if (l > 0.5) discard;
+        float tex = smoothstep(0.5, 0.0, l); gl_FragColor = vec4(uColor * tex, tex * vA * 0.55); }`,
+    transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending,
+  });
+  const motes = new THREE.Points(geo, mat);
+  motes.frustumCulled = false;
+  motes.onBeforeRender = () => {
+    const perfNow = performance.now() / 1000;
+    mat.uniforms.uTime.value = perfNow * CONFIG.atmoSpeed * 8;
+    motes.position.copy(camera.position);
+    motes.updateMatrixWorld();
+    finalPass.uniforms.iTime.value = perfNow;
+  };
+  setLayers(motes, LAYERS.ENTIRE_SCENE);
+  scene.add(motes);
+}
+
+// ---------- Starfield ----------
+{
+  const n = CONFIG.starCount, R = 90;
+  const pos = new Float32Array(n * 3), seed = new Float32Array(n), bright = new Float32Array(n);
+  for (let i = 0; i < n; i++) {
+    const u = Math.random() * 2 - 1, th = Math.random() * Math.PI * 2, s = Math.sqrt(1 - u * u);
+    pos[i * 3] = R * s * Math.cos(th);
+    pos[i * 3 + 1] = R * u;
+    pos[i * 3 + 2] = R * s * Math.sin(th);
+    seed[i] = Math.random() * 100;
+    bright[i] = 0.35 + Math.random() * 0.65;
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  geo.setAttribute('seed', new THREE.BufferAttribute(seed, 1));
+  geo.setAttribute('bright', new THREE.BufferAttribute(bright, 1));
+  const mat = new THREE.ShaderMaterial({
+    uniforms: {
+      uTime: starTime, uSize: { value: CONFIG.starSize }, uFlicker: { value: CONFIG.starFlicker },
+      uColor: { value: hexToVec3(CONFIG.starColor) }, uRes: { value: resVec },
+    },
+    vertexShader: `
+      attribute float seed; attribute float bright;
+      uniform float uTime; uniform float uSize; uniform float uFlicker; uniform vec2 uRes;
+      varying float vTw;
+      void main(){
+        vec4 mv = modelViewMatrix * vec4(position, 1.0);
+        float tw = 0.6 + 0.4 * sin(uTime * uFlicker + seed);
+        vTw = bright * tw;
+        gl_PointSize = max(uSize * uRes.y / 900.0 * (90.0 / max(-mv.z, 1.0)), 1.0);
+        gl_Position = projectionMatrix * mv;
+      }`,
+    fragmentShader: `
+      uniform vec3 uColor; varying float vTw;
+      void main(){
+        vec2 p = gl_PointCoord - 0.5; float l = length(p); if (l > 0.5) discard;
+        float core = smoothstep(0.5, 0.0, l);
+        gl_FragColor = vec4(uColor, core * vTw);
+      }`,
+    transparent: true, depthWrite: false, depthTest: true, blending: THREE.AdditiveBlending,
+  });
+  const stars = new THREE.Points(geo, mat);
+  stars.frustumCulled = false;
+  setLayers(stars, LAYERS.ENTIRE_SCENE);
+  scene.add(stars);
+}
+
+// ---------- Land markers ----------
+function buildMarkers(mesh) {
+  const geo = mesh.geometry;
+  const posAttr = geo.attributes.position;
+  const uvAttr = geo.attributes.uv;
+  const index = geo.index;
+  const map = mesh.material.map;
+
+  // Read base-color texture into a canvas to tell land from ocean
+  let data = null, iw = 0, ih = 0;
+  try {
+    const img = map && map.image;
+    if (img && img.width) {
+      const c = document.createElement('canvas');
+      iw = c.width = img.width; ih = c.height = img.height;
+      const ctx = c.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      data = ctx.getImageData(0, 0, iw, ih).data;
+    }
+  } catch (e) { data = null; }
+
+  const triCount = index ? index.count / 3 : posAttr.count / 3;
+  const getIdx = (t, k) => index ? index.getX(t * 3 + k) : t * 3 + k;
+  const cum = new Float32Array(triCount);
+  const a = new THREE.Vector3(), b = new THREE.Vector3(), c = new THREE.Vector3();
+  const ab = new THREE.Vector3(), ac = new THREE.Vector3();
+  let total = 0;
+  for (let t = 0; t < triCount; t++) {
+    a.fromBufferAttribute(posAttr, getIdx(t, 0));
+    b.fromBufferAttribute(posAttr, getIdx(t, 1));
+    c.fromBufferAttribute(posAttr, getIdx(t, 2));
+    total += ab.subVectors(b, a).cross(ac.subVectors(c, a)).length() * 0.5;
+    cum[t] = total;
+  }
+
+  const out = [], seeds = [];
+  const flipY = map ? map.flipY : false;
+  let tries = 0;
+  const maxTries = CONFIG.markerCount * 200;
+  while (out.length / 3 < CONFIG.markerCount && tries < maxTries) {
+    tries++;
+    const r = Math.random() * total;
+    let lo = 0, hi = triCount - 1;
+    while (lo < hi) { const mid = (lo + hi) >> 1; if (cum[mid] < r) lo = mid + 1; else hi = mid; }
+    const t = lo;
+    let r1 = Math.random(), r2 = Math.random();
+    if (r1 + r2 > 1) { r1 = 1 - r1; r2 = 1 - r2; }
+    const w0 = 1 - r1 - r2;
+    const i0 = getIdx(t, 0), i1 = getIdx(t, 1), i2 = getIdx(t, 2);
+
+    if (data && uvAttr) {
+      let u = uvAttr.getX(i0) * w0 + uvAttr.getX(i1) * r1 + uvAttr.getX(i2) * r2;
+      let v = uvAttr.getY(i0) * w0 + uvAttr.getY(i1) * r1 + uvAttr.getY(i2) * r2;
+      u = u - Math.floor(u); v = v - Math.floor(v);
+      if (flipY) v = 1 - v;
+      const px = clamp(Math.floor(u * iw), 0, iw - 1);
+      const py = clamp(Math.floor(v * ih), 0, ih - 1);
+      const ci = (py * iw + px) * 4;
+      const cr = data[ci], cg = data[ci + 1], cb = data[ci + 2];
+      if (cb > cr + 6 && cb > cg + 6) continue; // ocean → reject
+    }
+
+    a.fromBufferAttribute(posAttr, i0);
+    b.fromBufferAttribute(posAttr, i1);
+    c.fromBufferAttribute(posAttr, i2);
+    const p = new THREE.Vector3()
+      .addScaledVector(a, w0).addScaledVector(b, r1).addScaledVector(c, r2)
+      .multiplyScalar(1.012);
+    out.push(p.x, p.y, p.z);
+    seeds.push(Math.random());
+  }
+
+  const mgeo = new THREE.BufferGeometry();
+  mgeo.setAttribute('position', new THREE.Float32BufferAttribute(out, 3));
+  mgeo.setAttribute('seed', new THREE.Float32BufferAttribute(seeds, 1));
+  const mmat = new THREE.ShaderMaterial({
+    uniforms: {
+      uTime: markerTime, uColor: { value: hexToVec3(CONFIG.markerColor) },
+      uSize: { value: CONFIG.markerSize }, uSpeed: { value: CONFIG.markerSpeed }, uRes: { value: resVec },
+    },
+    vertexShader: `
+      attribute float seed; uniform float uSize; uniform vec2 uRes;
+      varying float vSeed; varying float vFade;
+      void main(){
+        vSeed = seed;
+        vec4 mv = modelViewMatrix * vec4(position, 1.0);
+        vec3 vn = normalize(normalMatrix * normalize(position));
+        vec3 vd = normalize(-mv.xyz);
+        vFade = smoothstep(0.15, 0.5, dot(vn, vd));
+        gl_PointSize = max(uSize * uRes.y / 900.0 * (7.0 / max(-mv.z, 1.0)), 2.0);
+        gl_Position = projectionMatrix * mv;
+      }`,
+    fragmentShader: `
+      uniform vec3 uColor; uniform float uTime; uniform float uSpeed;
+      varying float vSeed; varying float vFade;
+      void main(){
+        if (vFade <= 0.001) discard;
+        vec2 p = gl_PointCoord - 0.5;
+        float d = length(p) * 2.0;
+        if (d > 1.0) discard;
+        float core = smoothstep(0.30, 0.0, d) * 1.2;
+        float ph = fract(uTime * uSpeed + vSeed);
+        float ring = smoothstep(0.07, 0.0, abs(d - ph)) * (1.0 - ph);
+        gl_FragColor = vec4(uColor, clamp(core + ring, 0.0, 1.0) * vFade);
+      }`,
+    transparent: true, depthTest: true, depthWrite: false, blending: THREE.AdditiveBlending,
+  });
+  const markers = new THREE.Points(mgeo, mmat);
+  markers.frustumCulled = false;
+  setLayers(markers, LAYERS.ENTIRE_SCENE, LAYERS.BLOOM_SCENE);
+  mesh.add(markers);
+}
+
+// ---------- Load planet ----------
+const draco = new DRACOLoader();
+draco.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.5/');
+const gltfLoader = new GLTFLoader();
+gltfLoader.setDRACOLoader(draco);
+const loadGLTF = (url) => new Promise((res, rej) => gltfLoader.load(url, res, undefined, rej));
+
+let planetLoadedAt = null;
+
+(async () => {
+  let nightTex = null;
+  try {
+    const lightsGltf = await loadGLTF(PLANET_LIGHTS_GLB);
+    const lm = firstMesh(lightsGltf.scene);
+    nightTex = lm && lm.material && lm.material.map ? lm.material.map : null;
+  } catch (e) { console.warn('Night lights failed to load', e); }
+  if (!nightTex) {
+    nightTex = new THREE.DataTexture(new Uint8Array([0, 0, 0, 255]), 1, 1);
+    nightTex.needsUpdate = true;
+  }
+
+  try {
+    const gltf = await loadGLTF(PLANET_GLB);
+    const mesh = firstMesh(gltf.scene);
+    if (!mesh) throw new Error('No mesh in planet.glb');
+    mesh.removeFromParent();
+    mesh.geometry.computeBoundingSphere();
+    const bs = mesh.geometry.boundingSphere;
+    const s = CONFIG.planetRadius / bs.radius;
+    mesh.scale.setScalar(s);
+    mesh.position.copy(bs.center).applyQuaternion(mesh.quaternion).multiplyScalar(-s);
+
+    const mat = mesh.material.clone();
+    mat.metalness = 0;
+    mat.roughness = 1;
+    mat.envMapIntensity = 0;
+    const pu = {
+      time: planetTime, noiseScale: { value: 30 }, speedX: { value: 1.5 }, speedY: { value: 2.0 }, speedZ: { value: 2.5 },
+      rimColor: { value: hexToVec3(CONFIG.rimColor) }, rimPower: { value: CONFIG.rimPower },
+      nightBlendTexture: { value: nightTex }, nightLights: { value: CONFIG.nightLights },
+      terrainDepth: { value: CONFIG.terrainDepth }, terrainShade: { value: CONFIG.terrainShade },
+      oceanGlint: { value: CONFIG.oceanGlint }, oceanDeep: { value: CONFIG.oceanDeep },
+      oceanFlow: { value: CONFIG.oceanFlow }, oceanFlowSpeed: { value: CONFIG.oceanFlowSpeed },
+      oceanFlowScale: { value: CONFIG.oceanFlowScale },
+    };
+    mat.onBeforeCompile = (shader) => {
+      Object.assign(shader.uniforms, pu);
+      shader.extensionDerivatives = true; // dFdx/dFdy on WebGL1
+      shader.vertexShader = 'varying vec2 vCustomUv;\n' + shader.vertexShader.replace('void main() {', 'void main() {\n  vCustomUv = uv;');
+      shader.fragmentShader = `
+uniform float time; uniform float noiseScale; uniform float speedX; uniform float speedY; uniform float speedZ;
+uniform vec3 rimColor; uniform float rimPower; uniform sampler2D nightBlendTexture; uniform float nightLights;
+uniform float terrainDepth; uniform float terrainShade; uniform float oceanGlint; uniform float oceanDeep;
+uniform float oceanFlow; uniform float oceanFlowSpeed; uniform float oceanFlowScale;
+varying vec2 vCustomUv;
+${SNOISE}
+` + shader.fragmentShader.replace('#include <dithering_fragment>', `
+#include <dithering_fragment>
+vec3 normalizedNormal = normalize(vNormal);
+vec3 viewDir = normalize(vViewPosition);
+float rim = 1.0 - max(dot(viewDir, normalizedNormal), 0.0);
+rim = pow(rim, rimPower); rim = pow(rim, 1.5); rim *= 0.7;
+vec3 currentColor = gl_FragColor.rgb;
+float blueDom = currentColor.b - max(currentColor.r, currentColor.g);
+float waterMask = clamp(smoothstep(-0.005, 0.03, blueDom), 0.0, 1.0);
+float shimmer = snoise(vec3(vCustomUv.x * noiseScale + time * speedX, vCustomUv.y * noiseScale - time * speedY, time * speedZ));
+gl_FragColor.rgb += waterMask * shimmer * 0.025;
+float fT = time * oceanFlowSpeed * 4.0;
+float fS = 4.0 * oceanFlowScale;
+float warp = snoise(vec3(vCustomUv.x * fS - fT * 0.5, vCustomUv.y * fS + fT * 0.4, fT * 0.5));
+float flow = snoise(vec3(vCustomUv.x * fS * 2.0 + fT * 0.6 + warp, vCustomUv.y * fS * 2.0 - fT * 0.5, fT * 0.7));
+flow = warp * 0.6 + flow * 0.4;
+gl_FragColor.rgb += waterMask * flow * 0.12 * oceanFlow;
+gl_FragColor.rgb = mix(gl_FragColor.rgb, vec3(0.01, 0.06, 0.16), waterMask * oceanDeep);
+vec3 finalColor = mix(gl_FragColor.rgb, rimColor, rim);
+gl_FragColor = vec4(finalColor, 1.0);
+vec3 surfPos = -vViewPosition;
+float terrH = dot(texture2D(map, vCustomUv).rgb, vec3(0.299, 0.587, 0.114));
+vec3 sigX = dFdx(surfPos), sigY = dFdy(surfPos);
+vec3 vR1 = cross(sigY, normalizedNormal), vR2 = cross(normalizedNormal, sigX);
+float fDet = dot(sigX, vR1);
+vec3 vGrad = sign(fDet) * (dFdx(terrH) * vR1 + dFdy(terrH) * vR2);
+vec3 bumpedNormal = normalize(abs(fDet) * normalizedNormal - terrainDepth * vGrad);
+vec3 shadeNormal = mix(bumpedNormal, normalizedNormal, waterMask);
+vec3 cityLights = texture2D(nightBlendTexture, vCustomUv).rgb * gl_FragColor.rgb * nightLights;
+vec3 viewSunDir = normalize(vec3(-0.9, 0.18, 0.4));
+float ndl = dot(normalizedNormal, viewSunDir);
+float dayAmt = smoothstep(-0.05, 0.35, ndl);
+float relief = dot(shadeNormal, viewSunDir) - ndl;
+gl_FragColor.rgb *= clamp(1.0 + relief * terrainShade * dayAmt, 0.55, 1.6);
+float nightFactor  = smoothstep(0.18, -0.30, ndl);
+float lightsFactor = smoothstep(0.30, -0.35, ndl);
+gl_FragColor.rgb = mix(gl_FragColor.rgb, gl_FragColor.rgb * 0.08, nightFactor);
+gl_FragColor.rgb += cityLights * lightsFactor;
+vec3 halfDir = normalize(viewSunDir + viewDir);
+float ripple = snoise(vec3(vCustomUv * 240.0, time * 4.0));
+float ndh = max(dot(normalizedNormal, halfDir) + ripple * 0.02, 0.0);
+float glint = pow(ndh, 140.0);
+gl_FragColor.rgb += glint * waterMask * dayAmt * oceanGlint * vec3(1.0, 0.97, 0.88);
+`);
+    };
+    mat.customProgramCacheKey = () => 'ascend-planet';
+    mesh.material = mat;
+
+    planetGroup.add(mesh);
+    setLayers(planetGroup, LAYERS.ENTIRE_SCENE);
+    buildMarkers(mesh);
+
+    cloudGroup.visible = true;
+    glowMesh.visible = true;
+    planetLoadedAt = performance.now() / 1000;
+  } catch (e) {
+    console.error('Planet failed to load', e);
+  }
+})();
+
+// ---------- Scroll choreography state ----------
+let curP = 0;
+let curX = STOPS_X[0].v, curY = STOPS_Y[0].v, curS = STOPS_S[0].v;
+let spinPhase = 0;
+
+// ---------- Resize ----------
+function onResize() {
+  const w = window.innerWidth, h = window.innerHeight, pr = window.devicePixelRatio;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setPixelRatio(pr);
+  renderer.setSize(w, h, false);
+  [torusComposer, bloomComposer, finalComposer].forEach(c => { c.setPixelRatio(pr); c.setSize(w, h); });
+  renderer.getDrawingBufferSize(resVec);
+}
+window.addEventListener('resize', onResize);
+
+// ---------- Loop ----------
+const clock = new THREE.Clock();
+function frame() {
+  requestAnimationFrame(frame);
+  const dt = Math.min(clock.getDelta(), 0.05);
+  const now = performance.now() / 1000;
+
+  planetTime.value += dt / 12;
+  cloudTime.value += dt / 20;
+  starTime.value += dt;
+  markerTime.value += dt;
+
+  // Scroll progress
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const pTarget = maxScroll > 0 ? clamp(window.scrollY / maxScroll, 0, 1) : 0;
+  curP += (pTarget - curP) * Math.min(1, dt * 4.5);
+
+  const sideScale = clamp(window.innerWidth / 1200, 0.5, 1);
+  const k = Math.min(1, dt * 3.2);
+  curX += (sample(STOPS_X, curP) * sideScale - curX) * k;
+  curY += (sample(STOPS_Y, curP) - curY) * k;
+  curS += (sample(STOPS_S, curP) - curS) * k;
+
+  // One-time float-up entrance
+  let entryY = 0;
+  if (!reduceMotion) {
+    if (planetLoadedAt === null) {
+      entryY = ENTRY_START_Y;
+    } else {
+      const t = clamp((now - planetLoadedAt) / ENTRY_DUR, 0, 1);
+      const e = 1 - Math.pow(1 - t, 3);
+      entryY = ENTRY_START_Y * (1 - e);
+    }
+  }
+
+  worldGroup.position.set(curX, curY + entryY, 0);
+  worldGroup.scale.setScalar(curS);
+
+  spinPhase += dt * CONFIG.spin;
+  planetGroup.rotation.y = CONFIG.initRotation + spinPhase + curP * Math.PI * 1.6;
+
+  cloudMeshes.forEach(m => { m.rotation.y += dt * CONFIG[m.userData.spinKey]; });
+
+  glowMesh.quaternion.copy(camera.quaternion);
+  controls.update();
+
+  camera.layers.set(LAYERS.TORUS_SCENE);
+  torusComposer.render();
+  camera.layers.set(LAYERS.BLOOM_SCENE);
+  bloomComposer.render();
+
+  finalPass.uniforms.bloomTexture.value = bloomComposer.readBuffer.texture;
+  finalPass.uniforms.torusTexture.value = torusComposer.readBuffer.texture;
+
+  camera.layers.set(LAYERS.ENTIRE_SCENE);
+  finalComposer.render();
+}
+frame();
+  </script>
 </body>
 </html>
