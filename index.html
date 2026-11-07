@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tesla-Tsetsen — Албан ёсны дистрибютер</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="#" class="logo" aria-label="Tesla-Tsetsen нүүр хуудас">
+        <img src="assets/icons/logo.svg" width="70" height="36" alt="Logo" />
+      </a>
+
+      <button class="navbar__toggle" type="button" aria-label="Цэс нээх" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="navbar__menu" id="nav-menu">
+        <nav class="navbar__links" aria-label="Үндсэн цэс">
+          <a href="#model-3" class="nav-link">Model 3</a>
+          <a href="#model-y" class="nav-link">Model Y</a>
+          <a href="#cybertruck" class="nav-link">Cybertruck</a>
+          <a href="#roadster" class="nav-link">Roadster</a>
+          <a href="#robotaxi" class="nav-link nav-link--dropdown">
+            Robotaxi
+            <img src="assets/icons/chevron-down.svg" width="24" height="24" alt="" />
+          </a>
+        </nav>
+        <div class="navbar__actions">
+          <a href="#contact" class="btn btn--secondary btn--sm">Холбоо барих</a>
+          <a href="#test-drive" class="btn btn--primary btn--sm">Test drive</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <img class="hero__bg" src="assets/images/hero.jpg" alt="" />
+      <div class="hero__overlay"></div>
+      <div class="container">
+        <div class="hero__content">
+          <h1 class="hero__title">Албан ёсны дистрибютер</h1>
+          <p class="hero__text">Хүчирхэг, хэмнэлттэй, байгальд ээлтэй ирээдүйн жолоодлогыг өнөөдөр эхлүүл.</p>
+          <div class="actions">
+            <a href="#models" class="btn btn--primary">Button</a>
+            <a href="#contact" class="btn btn--secondary">Холбоо барих</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Models overview -->
+    <section class="section section--white" id="models">
+      <div class="container">
+        <div class="models">
+          <article class="model-card">
+            <img class="model-card__img" src="assets/images/model-3.jpg" alt="Tesla Model 3" />
+            <div class="model-card__body">
+              <h3 class="h5">Model 3</h3>
+              <p>Model 3 нь спорт седан маягийн цахилгаан машин. Жилийн 1.99% хүүтэй зээлээр авах боломжтой</p>
+            </div>
+            <div class="actions actions--center">
+              <a href="#" class="btn btn--secondary">Одоо захиалах</a>
+              <a href="#model-3" class="btn btn--link">Дэлгэрэнгүй <img src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
+            </div>
+          </article>
+
+          <article class="model-card">
+            <img class="model-card__img" src="assets/images/model-y.jpg" alt="Tesla Model Y" />
+            <div class="model-card__body">
+              <h3 class="h5">Model Y</h3>
+              <p>SUV цахилгаан машин. Ачаа тээш, зорчигчдод илүү зайтай тул гэр бүлд тохиромжтой.</p>
+            </div>
+            <div class="actions actions--center">
+              <a href="#" class="btn btn--secondary">Одоо захиалах</a>
+              <a href="#model-y" class="btn btn--link">Дэлгэрэнгүй <img src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
+            </div>
+          </article>
+
+          <article class="model-card">
+            <img class="model-card__img" src="assets/images/cybertruck.jpg" alt="Tesla Cybertruck" />
+            <div class="model-card__body">
+              <h3 class="h5">Cybertruck</h3>
+              <p>Зэвэрдэггүй гангаар хийсэн футурист дизайнтай, бат бөх бөгөөд замгүй газар явахад зориулагдсан.</p>
+            </div>
+            <div class="actions actions--center">
+              <a href="#" class="btn btn--secondary">Одоо захиалах</a>
+              <a href="#cybertruck" class="btn btn--link">Дэлгэрэнгүй <img src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
+            </div>
+          </article>
+
+          <article class="model-card">
+            <img class="model-card__img" src="assets/images/roadster.jpg" alt="Tesla Roadster" />
+            <div class="model-card__body">
+              <h3 class="h5">Roadster</h3>
+              <p>Цахилгаан спорт машин. Маш хурдан хурдатгалтай, хоёр хаалгатай, задгай дээвэртэй загвар юм.</p>
+            </div>
+            <div class="actions actions--center">
+              <a href="#" class="btn btn--secondary">Одоо захиалах</a>
+              <a href="#roadster" class="btn btn--link">Дэлгэрэнгүй <img src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Green loan logos -->
+    <section class="logos-section">
+      <h2 class="logos-section__title">Ногоон зээлээр авах боломж</h2>
+      <div class="logos-strip">
+        <img src="assets/images/bank-logo-1.png" alt="Golomt Bank" />
+        <img src="assets/images/bank-logo-2.png" alt="TDB" />
+        <img src="assets/images/bank-logo-3.png" alt="M Bank" />
+        <img src="assets/images/bank-logo-1.png" alt="Golomt Bank" />
+        <img src="assets/images/bank-logo-2.png" alt="TDB" />
+        <img src="assets/images/bank-logo-3.png" alt="M Bank" />
+        <img src="assets/images/bank-logo-1.png" alt="Golomt Bank" />
+      </div>
+    </section>
+
+    <!-- Model 3 -->
+    <section class="section section--gray" id="model-3">
+      <div class="container">
+        <article class="feature-card">
+          <div class="feature-card__media">
+            <img src="assets/images/feature-model-3.jpg" alt="Tesla Model 3" />
+          </div>
+          <div class="feature-card__content">
+            <div class="feature-card__text">
+              <p class="tagline">Tesla-Tsetsen</p>
+              <h2 class="h2">Model 3</h2>
+              <p>Model 3 нь Tesla-гийн спорт седан маягийн цахилгаан машин. Tesla-гийн хамгийн хямд загваруудын нэг бөгөөд хурдан, хэмнэлттэй.</p>
+              <p>Tа сард $439-өөс эхлэн түрээслэх, эсвэл жилийн 1.99% хүүтэй зээлээр авах боломжтой.</p>
+            </div>
+            <div class="partner-logos">
+              <img src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
+              <img src="assets/icons/webflow-logo-2.svg" width="120" height="48" alt="Relume" />
+              <img src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
+            </div>
+            <div class="actions">
+              <a href="#" class="btn btn--secondary">Зээл судлах</a>
+              <a href="#" class="btn btn--link">Дэлгэрэнгүй <img src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Model Y -->
+    <section class="section section--gray" id="model-y">
+      <div class="container">
+        <article class="feature-card feature-card--reverse">
+          <div class="feature-card__media feature-card__media--video">
+            <img src="assets/images/lightbox.png" alt="" />
+            <button class="play-btn" type="button" aria-label="Model Y видео тоглуулах">
+              <img src="assets/icons/play.svg" width="64" height="64" alt="" />
+            </button>
+          </div>
+          <div class="feature-card__content">
+            <div class="feature-card__text">
+              <h2 class="h2">Model Y</h2>
+              <p>Model Y нь Tesla-гийн дунд оврын SUV цахилгаан машин. Model 3-аас илүү өндөр, ачаа тээш, зорчигчдод илүү зайтай тул гэр бүлд тохиромжтой.</p>
+              <p>Tа сард $499-өөс эхлэн түрээслэх, эсвэл жилийн 2.49% хүүтэй зээлээр авах боломжтой. Мөн урт тэнхлэгтэй, илүү том Model Y L Premium хувилбар $61,990-аас эхэлдэг.</p>
+            </div>
+            <div class="partner-logos">
+              <img src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
+              <img src="assets/icons/webflow-logo-2.svg" width="120" height="48" alt="Relume" />
+              <img src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
+            </div>
+            <div class="actions">
+              <a href="#" class="btn btn--secondary">Зээл судлах</a>
+              <a href="#" class="btn btn--link">Дэлгэрэнгүй <img src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Cybertruck -->
+    <section class="section section--gray" id="cybertruck">
+      <div class="container">
+        <article class="feature-card">
+          <div class="feature-card__media">
+            <img src="assets/images/feature-cybertruck.jpg" alt="Tesla Cybertruck" />
+          </div>
+          <div class="feature-card__content">
+            <div class="feature-card__text">
+              <p class="tagline">Tesla-Tsetsen</p>
+              <h2 class="h2">Cybertruck</h2>
+              <p>Cybertruck нь Tesla-гийн цахилгаан пикап буюу ачааны машин. Зэвэрдэггүй гангаар хийсэн хурц өнцөгтэй футурист дизайнтай, бат бөх бөгөөд замгүй газар явахад зориулагдсан.</p>
+              <p>Tа сард $1,129-өөс эхлэн түрээслэх боломжтой.</p>
+            </div>
+            <div class="partner-logos">
+              <img src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
+              <img src="assets/icons/webflow-logo-2.svg" width="120" height="48" alt="Relume" />
+              <img src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
+            </div>
+            <div class="actions">
+              <a href="#" class="btn btn--secondary">Зээл судлах</a>
+              <a href="#" class="btn btn--link">Дэлгэрэнгүй <img src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Roadster -->
+    <section class="section section--gray" id="roadster">
+      <div class="container">
+        <article class="feature-card feature-card--reverse">
+          <div class="feature-card__media feature-card__media--video">
+            <img src="assets/images/lightbox.png" alt="" />
+            <button class="play-btn" type="button" aria-label="Roadster видео тоглуулах">
+              <img src="assets/icons/play.svg" width="64" height="64" alt="" />
+            </button>
+          </div>
+          <div class="feature-card__content">
+            <div class="feature-card__text">
+              <h2 class="h2">Roadster</h2>
+              <p>Roadster нь Tesla-гийн цахилгаан спорт машин. Маш хурдан хурдатгалтай, хоёр хаалгатай, задгай дээвэртэй загвар юм.</p>
+              <p>Tesla Roadster-н “Reserve Now” буюу урьдчилан захиалах боломжтой. Тиймээс одоогоор худалдаанд гараагүй, захиалга авч байгаа шатандаа байна.</p>
+            </div>
+            <div class="partner-logos">
+              <img src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
+              <img src="assets/icons/webflow-logo-2.svg" width="120" height="48" alt="Relume" />
+              <img src="assets/icons/webflow-logo-1.svg" width="120" height="48" alt="Webflow" />
+            </div>
+            <div class="actions">
+              <a href="#" class="btn btn--secondary">Урьдчилан захиалга</a>
+              <a href="#" class="btn btn--link">Дэлгэрэнгүй <img src="assets/icons/chevron-right.svg" width="24" height="24" alt="" /></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Robotaxi gallery -->
+    <section class="section section--gray" id="robotaxi">
+      <div class="container gallery">
+        <div class="gallery__title">
+          <h2 class="h2">Robotaxi үйлчилгээ</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+
+        <div class="slider" data-slider>
+          <div class="slider__viewport">
+            <div class="slider__track">
+              <div class="slider__slide"><img src="assets/images/hero.jpg" alt="Robotaxi зураг 1" /></div>
+              <div class="slider__slide"><img src="assets/images/gallery-2.jpg" alt="Robotaxi зураг 2" /></div>
+              <div class="slider__slide"><img src="assets/images/gallery-3.jpg" alt="Robotaxi зураг 3" /></div>
+            </div>
+          </div>
+          <button class="slider__arrow slider__arrow--prev" type="button" aria-label="Өмнөх зураг">
+            <img src="assets/icons/arrow-back.svg" width="24" height="24" alt="" />
+          </button>
+          <button class="slider__arrow slider__arrow--next" type="button" aria-label="Дараагийн зураг">
+            <img src="assets/icons/arrow-forward.svg" width="24" height="24" alt="" />
+          </button>
+          <div class="slider__dots" role="tablist">
+            <button class="slider__dot is-active" type="button" aria-label="1-р зураг"></button>
+            <button class="slider__dot" type="button" aria-label="2-р зураг"></button>
+            <button class="slider__dot" type="button" aria-label="3-р зураг"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__newsletter">
+          <a href="#" class="logo" aria-label="Tesla-Tsetsen">
+            <img src="assets/icons/logo.svg" width="70" height="36" alt="Logo" />
+          </a>
+          <p>Бидэнтэй хамт байгаарай</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault()">
+            <div class="newsletter-form__row">
+              <label class="visually-hidden" for="email">Имэйл</label>
+              <input id="email" type="email" placeholder="Enter your email" required />
+              <button type="submit" class="btn btn--secondary">Subscribe</button>
+            </div>
+            <p class="newsletter-form__note">Та имэйл бүртгүүлж мэдээлэл аваарай.</p>
+          </form>
+        </div>
+
+        <div class="footer__links">
+          <div class="footer__col">
+            <h4>Загварууд</h4>
+            <ul>
+              <li><a href="#model-3">Model 3</a></li>
+              <li><a href="#cybertruck">Cybertruck</a></li>
+              <li><a href="#roadster">Roadster</a></li>
+              <li><a href="#robotaxi">Robotaxi</a></li>
+              <li><a href="#test-drive">Test drive</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Компани</h4>
+            <ul>
+              <li><a href="#">Бидний тухай</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Investors</a></li>
+              <li><a href="#">News</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Follow us</h4>
+            <ul class="social">
+              <li><a href="#"><img src="assets/icons/facebook.svg" width="24" height="24" alt="" />Facebook</a></li>
+              <li><a href="#"><img src="assets/icons/instagram.svg" width="24" height="24" alt="" />Instagram</a></li>
+              <li><a href="#"><img src="assets/icons/x.svg" width="24" height="24" alt="" />X</a></li>
+              <li><a href="#"><img src="assets/icons/linkedin.svg" width="24" height="24" alt="" />LinkedIn</a></li>
+              <li><a href="#"><img src="assets/icons/youtube.svg" width="24" height="24" alt="" />Youtube</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__credits">
+        <img class="footer__divider" src="assets/icons/divider.svg" alt="" />
+        <div class="footer__bottom">
+          <p>© 2025 Tesla-Tsetsen. All rights reserved.</p>
+          <div class="footer__legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookies Settings</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
