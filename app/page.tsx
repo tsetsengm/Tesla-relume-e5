@@ -6,9 +6,12 @@ import { FeatureShowcase } from "@/components/ui/FeatureShowcase";
 import { Hero } from "@/components/ui/Hero";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
-import { models, robotaxiSlides } from "@/data/models";
+import { robotaxiSlides } from "@/data/models";
+import { getModels } from "@/lib/models";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const models = await getModels();
+
   return (
     <>
       <Hero image="/assets/images/hero.jpg" compact>

@@ -18,7 +18,7 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { model3 } from "@/data/model-details/model-3";
 import type { Feature } from "@/data/model-details/types";
-import { models } from "@/data/models";
+import { getModels } from "@/lib/models";
 import {
   breakpoints,
   colorGroups,
@@ -61,7 +61,9 @@ function lucideIcons() {
   return [...new Map(all.map((f) => [f.icon.displayName ?? f.title, f.icon])).entries()];
 }
 
-export default function StyleguidePage() {
+export default async function StyleguidePage() {
+  const [featuredModel] = await getModels();
+
   return (
     <div className="px-4 py-16 sm:px-8 lg:px-16 lg:py-24">
       <div className="mx-auto grid w-full max-w-site gap-16 lg:grid-cols-[200px_minmax(0,1fr)]">
@@ -412,7 +414,7 @@ export default function StyleguidePage() {
               <div className="grid gap-[18px] lg:grid-cols-2">
                 <Demo name="ModelCard" file="components/home/ModelCard.tsx" description="Нүүр хуудасны загварын карт.">
                   <div className="max-w-[320px]">
-                    <ModelCard model={models[0]} />
+                    {featuredModel && <ModelCard model={featuredModel} />}
                   </div>
                 </Demo>
                 <Demo name="TrimCard" file="components/model/TrimCard.tsx" description="featured үед accent tone болон badge.">
