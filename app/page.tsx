@@ -14,7 +14,7 @@ export default function HomePage() {
       <Hero image="/assets/images/hero.jpg" compact>
         <div className="flex max-w-[768px] flex-col gap-6">
           <Reveal variant="grow" delay={60}>
-            <h1 className="text-[clamp(40px,5.6vw,72px)] leading-[1.04] font-extrabold tracking-[-0.03em] [text-shadow:0_2px_50px_rgb(0_0_0/0.55)]">
+            <h1 className="heading-1">
               Албан ёсны дистрибютер
             </h1>
           </Reveal>
@@ -71,7 +71,7 @@ export default function HomePage() {
               <h2 className="heading-2">Robotaxi үйлчилгээ</h2>
             </Reveal>
             <Reveal variant="grow" delay={90}>
-              <p className="text-lg leading-[1.65] text-muted [text-shadow:0_1px_24px_rgb(0_0_0/0.55)]">
+              <p className="lead">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
             </Reveal>

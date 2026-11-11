@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 /* ============ Design tokens ============ */
-@theme {
+/* `static` emits every token on :root, so /styleguide can read live values */
+@theme static {
   /* Breakpoints matched to the original site (601 / 992 / 1101px) */
   --breakpoint-sm: 37.5625rem;
   --breakpoint-lg: 62rem;
@@ -34,6 +35,32 @@
 }
 
 /* ============ Reusable typography ============ */
+/* Model detail hero title */
+@utility display {
+  font-size: clamp(56px, 8vw, 104px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  text-shadow: 0 2px 50px rgb(0 0 0 / 0.55);
+}
+
+/* Home hero title */
+@utility heading-1 {
+  font-size: clamp(40px, 5.6vw, 72px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  text-shadow: 0 2px 50px rgb(0 0 0 / 0.55);
+}
+
+/* Section lead paragraph */
+@utility lead {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--color-muted);
+  text-shadow: 0 1px 24px rgb(0 0 0 / 0.55);
+}
+
 @utility heading-2 {
   font-size: clamp(34px, 4.4vw, 52px);
   font-weight: 800;

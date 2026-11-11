@@ -11,7 +11,7 @@ export function ModelHero({ hero }: { hero: ModelDetail["hero"] }) {
           <p className="tagline">{hero.tagline}</p>
         </Reveal>
         <Reveal delay={60}>
-          <h1 className="text-[clamp(56px,8vw,104px)] leading-[1.04] font-extrabold tracking-[-0.03em] [text-shadow:0_2px_50px_rgb(0_0_0/0.55)]">
+          <h1 className="display">
             {hero.title}
           </h1>
         </Reveal>

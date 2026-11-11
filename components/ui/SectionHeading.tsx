@@ -23,7 +23,7 @@ export function SectionHeading({ tagline, title, text, variant, className }: Sec
       </Reveal>
       {text && (
         <Reveal variant={variant} delay={160}>
-          <p className="mt-[18px] text-lg leading-[1.65] text-muted [text-shadow:0_1px_24px_rgb(0_0_0/0.55)]">{text}</p>
+          <p className="lead mt-[18px]">{text}</p>
         </Reveal>
       )}
     </div>
