@@ -32,7 +32,12 @@ SUPABASE_PUBLISHABLE_KEY=sb_publishable_...
 ### Админ хэсэг — `/admin`
 
 - `/admin/login` → Supabase Auth-д бүртгэлтэй, `public.admins` хүснэгтэд байгаа хэрэглэгчээр нэвтэрнэ.
-- Загварын карт бүрийг засаж хадгалахад нүүр хуудас шууд шинэчлэгдэнэ (`updateTag("models")`).
+- `/admin` — бүх загварын жагсаалт: хайлт, шүүлтүүр (Бүгд / Харагдаж буй / Нуусан), нүд дарж шууд нуух/харуулах.
+- `/admin/models/<slug>` — нэг загвар засах: картын урьдчилсан харагдац, ⌘S хадгалах, өмнөх/дараах загвар руу шилжих,
+  хадгалаагүй өөрчлөлттэй гарахад анхааруулна.
+- Зураг: чирж оруулах эсвэл дарж сонгоно (JPG/PNG/WebP/AVIF, 5MB хүртэл) → Supabase Storage `model-images` bucket.
+  Browser нь server-ийн өгсөн нэг удаагийн signed URL-аар шууд upload хийнэ (`createImageUpload`).
+- Хадгалахад нүүр хуудас шууд шинэчлэгдэнэ (`updateTag("models")`).
 - Шинэ админ нэмэх: Supabase → Authentication-д хэрэглэгч үүсгээд SQL Editor-д
   `insert into public.admins (user_id) select id from auth.users where email = '...';`
 - Эрх: `models` дээр зөвхөн админ `update` хийнэ (RLS). Шинэ загвар нэмэх, устгахыг одоогоор dashboard-оос хийнэ.
