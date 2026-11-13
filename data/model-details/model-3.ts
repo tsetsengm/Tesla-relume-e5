@@ -50,10 +50,11 @@ export const model3: ModelDetail = {
         subtitle: "Хойд дугуйгаар хөтлөгчтэй",
         price: "$36,990",
         lease: "эсвэл сард $439-өөс түрээслэх",
+        // Same three metrics, same order on every trim card → compare by column (Similarity)
         stats: [
           { value: "517 км", label: "явах зай" },
           { value: "5.8 сек", label: "0–96 км/ц" },
-          { value: "680 л", label: "ачааны багтаамж" },
+          { value: "274 км", label: "15 минутад цэнэглэнэ" },
         ],
       },
       {
@@ -64,7 +65,7 @@ export const model3: ModelDetail = {
         stats: [
           { value: "557 км", label: "явах зай" },
           { value: "3.8 сек", label: "0–96 км/ц" },
-          { value: "15 минутад", label: "298 км цэнэглэнэ" },
+          { value: "298 км", label: "15 минутад цэнэглэнэ" },
         ],
       },
       {
@@ -75,9 +76,9 @@ export const model3: ModelDetail = {
         badge: "Жилийн 1.99% хүүтэй зээл",
         featured: true,
         stats: [
-          { value: "528 м.х.", label: "оргил хүч" },
+          { value: "509 км", label: "явах зай" },
           { value: "2.9 сек", label: "0–96 км/ц" },
-          { value: "262 км/ц", label: "дээд хурд" },
+          { value: "237 км", label: "15 минутад цэнэглэнэ" },
         ],
       },
     ],

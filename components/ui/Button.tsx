@@ -10,8 +10,8 @@ type ButtonProps = {
   children: ReactNode;
   variant?: Variant;
   size?: Size;
-  /** Trailing icon: arrow (CTA) or chevron (text link) */
-  icon?: "arrow" | "chevron";
+  /** Trailing icon: arrow (CTA), chevron (link to another page) or down (jump further down this page) */
+  icon?: "arrow" | "chevron" | "down";
   href?: string;
   type?: "button" | "submit";
   className?: string;
@@ -38,15 +38,16 @@ export function Button({ children, variant = "primary", size = "md", icon, href,
 
   const iconEl = icon && (
     <Image
-      src={icon === "arrow" ? "/assets/icons/arrow-forward.svg" : "/assets/icons/chevron-right.svg"}
-      width={icon === "arrow" ? 18 : 24}
-      height={icon === "arrow" ? 18 : 24}
+      src={icon === "arrow" ? "/assets/icons/arrow-forward.svg" : icon === "down" ? "/assets/icons/chevron-down.svg" : "/assets/icons/chevron-right.svg"}
+      width={icon === "arrow" ? 18 : icon === "down" ? 20 : 24}
+      height={icon === "arrow" ? 18 : icon === "down" ? 20 : 24}
       alt=""
       unoptimized
       className={cn(
         // Figma icons are black: invert them everywhere except on the green button
         variant !== "primary" && "invert",
-        variant === "link" && "transition-transform duration-200 group-hover:translate-x-[3px]",
+        variant === "link" && "transition-transform duration-200",
+        variant === "link" && (icon === "down" ? "group-hover:translate-y-[2px]" : "group-hover:translate-x-[3px]"),
       )}
     />
   );

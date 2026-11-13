@@ -6,16 +6,5 @@ export const banks = {
   mbank: { name: "M Bank", logo: "/assets/images/bank-logo-3.png" },
 } satisfies Record<string, Bank>;
 
-/** "Ногоон зээлээр авах боломж" strip */
-export const bankStrip: Bank[] = [
-  banks.golomt,
-  banks.tdb,
-  banks.mbank,
-  banks.golomt,
-  banks.tdb,
-  banks.mbank,
-  banks.golomt,
-];
-
-/** Small logos shown under each model showcase */
-export const partnerBanks: Bank[] = [banks.mbank, banks.golomt, banks.tdb];
+/** Green-loan partner banks: logos in the home BankStrip, names in each showcase's LoanBox */
+export const partnerBanks: Bank[] = [banks.golomt, banks.tdb, banks.mbank];

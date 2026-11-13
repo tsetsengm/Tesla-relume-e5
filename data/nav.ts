@@ -5,7 +5,7 @@ export const mainNav: NavLink[] = [
   { label: "Model Y", href: "/#model-y" },
   { label: "Cybertruck", href: "/#cybertruck" },
   { label: "Roadster", href: "/#roadster" },
-  { label: "Robotaxi", href: "/#robotaxi", dropdown: true },
+  { label: "Robotaxi", href: "/#robotaxi" },
 ];
 
 export const footerColumns: { title: string; links: NavLink[] }[] = [

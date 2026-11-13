@@ -3,7 +3,7 @@ import path from "node:path";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { BankChips } from "@/components/home/BankLogos";
+import { LoanBox } from "@/components/home/LoanBox";
 import { ModelCard } from "@/components/home/ModelCard";
 import { CheckList, FeatureItem, IconBadge } from "@/components/model/FeatureGrid";
 import { SpecTable } from "@/components/model/SpecTable";
@@ -85,6 +85,7 @@ export default async function StyleguidePage() {
             <div className="grid gap-[18px] sm:grid-cols-2 xl:grid-cols-4">
               {principles.map((p) => (
                 <GlassCard key={p.title} className="p-6">
+                  <p className="tagline relative mb-3 text-[10px]">{p.law}</p>
                   <h3 className="relative mb-3 text-[17px] font-semibold leading-snug">{p.title}</h3>
                   <p className="relative text-sm leading-[1.6] text-muted">{p.text}</p>
                 </GlassCard>
@@ -94,17 +95,17 @@ export default async function StyleguidePage() {
 
           {/* 02 Brand */}
           <SgSection id="brand" index={sectionIndex("brand")} title={sectionLabel("brand")}>
-            <div className="grid gap-[18px] sm:grid-cols-3">
+            {/* Only the two backgrounds the wordmark really sits on */}
+            <div className="grid gap-[18px] sm:grid-cols-2">
               {[
-                { label: "Дэвсгэр дээр", note: "--color-bg", className: "bg-bg border border-line" },
-                { label: "Шилэн самбар дээр", note: "--color-glass-2", className: "bg-glass-2 border border-line-strong" },
-                { label: "Зураг дээр", note: "overlay + mask", photo: true, className: "border border-line" },
+                { label: "Footer дээр", note: "--color-bg", className: "bg-bg border border-line" },
+                { label: "Navbar дээр", note: "bg 55% + blur 16px", photo: true, className: "border border-line" },
               ].map((tile) => (
-                <div key={tile.label} className={`relative flex aspect-[4/3] flex-col items-center justify-center overflow-hidden rounded-card ${tile.className}`}>
+                <div key={tile.label} className={`relative flex aspect-[16/9] flex-col items-center justify-center overflow-hidden rounded-card ${tile.className}`}>
                   {tile.photo && (
                     <>
-                      <Image src="/assets/images/hero.jpg" alt="" fill sizes="400px" className="object-cover opacity-55" />
-                      <div className="absolute inset-0 bg-bg/40" />
+                      <Image src="/assets/images/hero.jpg" alt="" fill sizes="600px" className="object-cover" />
+                      <div className="absolute inset-0 bg-bg/55 backdrop-blur-[16px]" />
                     </>
                   )}
                   <Image src="/assets/icons/tesla-wordmark.svg" width={160} height={16} alt="Tesla" unoptimized className="relative" />
@@ -241,7 +242,7 @@ export default async function StyleguidePage() {
               {[
                 { name: "Hairline", code: "border-line", note: "Карт, navbar, footer, хүснэгт", box: "border border-line" },
                 { name: "Strong", code: "border-line-strong", note: "Самбар, secondary товч, input", box: "border border-line-strong" },
-                { name: "Accent", code: "border-accent/40", note: "Featured карт, slider сумны hover", box: "border border-accent/40" },
+                { name: "Accent", code: "border-accent/40", note: "Featured trim карт (slider сумны hover дээр /50)", box: "border border-accent/40" },
                 { name: "Gradient hairline", code: ".hairline", note: "FeatureShowcase-ийн ногоон гэрэлт хүрээ", box: "hairline relative border border-line-strong" },
               ].map((s) => (
                 <div key={s.name} className={`rounded-card bg-glass p-6 ${s.box}`}>
@@ -408,7 +409,7 @@ export default async function StyleguidePage() {
               </Demo>
 
               <Demo name="SectionHeading" file="components/ui/SectionHeading.tsx" description="Tagline + гарчиг + lead, гурвуулаа дараалан гарч ирнэ.">
-                <SectionHeading tagline="Цэнэглэлт" title="Хялбар, хурдан цэнэглэлт" text="Цахилгаан байгаа хаана ч цэнэглэнэ." className="mb-0" />
+                <SectionHeading tagline="Цэнэглэлт" title="Хялбар, хурдан цэнэглэлт" text="Цахилгаан байгаа хаана ч цэнэглэнэ." spacing="none" />
               </Demo>
 
               <div className="grid gap-[18px] lg:grid-cols-2">
@@ -433,8 +434,12 @@ export default async function StyleguidePage() {
                 </Demo>
               </div>
 
-              <Demo name="BankChips" file="components/home/BankLogos.tsx" description="Showcase доорх банкны лого. Цагаан chip дээр тул харанхуйд уншигдана.">
-                <BankChips />
+              <Demo
+                name="LoanBox"
+                file="components/home/LoanBox.tsx"
+                description="Common Region: зээлийн бүх мэдээлэл (хүү, түрээс, банк, товч) нэг хүрээтэй хайрцагт. Өгөгдөл нь Supabase-ийн loan_rate, lease_from."
+              >
+                <LoanBox loan={featuredModel?.loan ?? { rate: "1.99%", leaseFrom: "$439" }} />
               </Demo>
 
               <Demo name="SpecTable" file="components/model/SpecTable.tsx" description="Бүлэглэсэн үзүүлэлт, утсан дээр хажуу тийш гүйнэ.">

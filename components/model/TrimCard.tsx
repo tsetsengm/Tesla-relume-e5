@@ -25,7 +25,8 @@ export function TrimCard({ trim }: { trim: Trim }) {
           </li>
         ))}
       </ul>
-      <Button href="#contact" className="relative mt-auto">
+      {/* Similarity: only the featured trim gets the green button */}
+      <Button href="#contact" variant={trim.featured ? "primary" : "secondary"} className="relative mt-auto">
         Одоо захиалах
       </Button>
     </GlassCard>

@@ -68,6 +68,8 @@ export async function updateModel(_prev: FormState, formData: FormData): Promise
     showcase_video_poster: mediaType === "video" ? text(formData, "showcase_video_poster") : null,
     showcase_video_label: mediaType === "video" ? text(formData, "showcase_video_label") : null,
     showcase_primary_action: text(formData, "showcase_primary_action"),
+    loan_rate: text(formData, "loan_rate") || null,
+    lease_from: text(formData, "lease_from") || null,
     // Paragraphs are separated by a blank line in the textarea
     showcase_paragraphs: text(formData, "showcase_paragraphs")
       .split(/\n\s*\n/)

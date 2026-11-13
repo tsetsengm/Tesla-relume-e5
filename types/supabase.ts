@@ -34,6 +34,8 @@ export type Database = {
           detail_href: string | null;
           id: number;
           is_published: boolean;
+          lease_from: string | null;
+          loan_rate: string | null;
           name: string;
           showcase_image: string | null;
           showcase_image_alt: string | null;
@@ -54,6 +56,8 @@ export type Database = {
           detail_href?: string | null;
           id?: never;
           is_published?: boolean;
+          lease_from?: string | null;
+          loan_rate?: string | null;
           name: string;
           showcase_image?: string | null;
           showcase_image_alt?: string | null;
@@ -74,6 +78,8 @@ export type Database = {
           detail_href?: string | null;
           id?: never;
           is_published?: boolean;
+          lease_from?: string | null;
+          loan_rate?: string | null;
           name?: string;
           showcase_image?: string | null;
           showcase_image_alt?: string | null;

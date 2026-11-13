@@ -10,6 +10,8 @@ export type Model = {
   /** Detail page, when one exists */
   detailHref?: string;
   card: { image: string; alt: string; description: string };
+  /** Green-loan terms; shown in the showcase loan box when present */
+  loan?: { rate?: string; leaseFrom?: string };
   showcase: {
     media: ShowcaseMedia;
     paragraphs: string[];

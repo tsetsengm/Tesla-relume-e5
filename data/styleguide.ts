@@ -15,11 +15,28 @@ export const sgSections = [
   { id: "motion", label: "Хөдөлгөөн" },
 ] as const;
 
+/** Design rules the site actually follows — four of them come straight from Gestalt laws. */
 export const principles = [
-  { title: "Харанхуй, нам гүм дэвсгэр", text: "Хуудас бүр гүн хөх-хар --color-bg дээр. Машины зураг гэрэл, бичвэр тод харагдана." },
-  { title: "Шилэн гадаргуу", text: "Карт, самбар бүр тунгалаг glass + backdrop blur + 1px hairline. Цул саарал хайрцаг хэрэглэхгүй." },
-  { title: "Ногоон зөвхөн үйлдэлд", text: "--color-accent нь товч, tagline, идэвхтэй төлөвт л. Чимэглэлд ногоон хэрэглэхгүй." },
-  { title: "Тайван хөдөлгөөн", text: "700ms ease-soft reveal, Lenis зөөлөн scroll. prefers-reduced-motion үед бүгд зогсоно." },
+  {
+    title: "Хэсэг бүрт нэг ногоон товч",
+    law: "Similarity",
+    text: "Ижил харагдах зүйл ижил ач холбогдолтой. Гол үйлдэл ногоон, хоёрдогч нь тунгалаг, холбоос нь текст. › нь өөр хуудас, ↓ нь доорх хэсэг рүү.",
+  },
+  {
+    title: "Холбоотой зүйлс нэг бүсэд",
+    law: "Common Region · Proximity",
+    text: "Зээлийн хүү, түрээс, банк, товч нэг хайрцагт. Гарчиг агуулгадаа ойр, бүлэг хооронд том зай.",
+  },
+  {
+    title: "Урт хуудсыг нэг шугамаар холбоно",
+    law: "Uniform Connectedness",
+    text: "Нүүрийн 4 showcase-ийг дугаартай шугам, Model 3 хуудасны бүлгүүдийг sticky цэс холбоно.",
+  },
+  {
+    title: "Аль болох энгийн",
+    law: "Prägnanz",
+    text: "Давталт, ажилладаггүй товч, placeholder бичвэргүй. Банкны лого сайтад ганц удаа. Харанхуй дэвсгэр, шилэн карт, нэг үсгийн гэр бүл.",
+  },
 ];
 
 export type ColorToken = { name: string; usage: string };
@@ -113,11 +130,13 @@ export const pageSections = [
   { name: "Navbar", file: "components/layout/Navbar.tsx", href: "/", note: "Sticky, glass blur, утсан дээр унждаг цэс" },
   { name: "Hero", file: "components/ui/Hero.tsx", href: "/", note: "compact (нүүр) эсвэл бүтэн өндөр (загвар)" },
   { name: "ModelCard grid", file: "components/home/ModelCard.tsx", href: "/#models", note: "4 → 2 → 1 багана" },
-  { name: "BankStrip", file: "components/home/BankLogos.tsx", href: "/", note: "Ногоон зээлийн банкууд" },
-  { name: "FeatureShowcase", file: "components/ui/FeatureShowcase.tsx", href: "/#model-3", note: "Зураг/видео + бичвэр, reverse" },
+  { name: "BankStrip", file: "components/home/BankLogos.tsx", href: "/", note: "Банкны лого сайтад ганц удаа гарах тууз" },
+  { name: "ModelStepper", file: "components/home/ModelStepper.tsx", href: "/#model-3", note: "4 showcase-ийг холбосон sticky шугам" },
+  { name: "FeatureShowcase", file: "components/ui/FeatureShowcase.tsx", href: "/#model-3", note: "Зураг/видео + бичвэр + LoanBox, reverse" },
   { name: "RobotaxiSlider", file: "components/home/RobotaxiSlider.tsx", href: "/#robotaxi", note: "Сум, цэг, wrap-around" },
   { name: "ModelHero", file: "components/model/ModelHero.tsx", href: "/models/model-3", note: "Display гарчиг + 3 статистик" },
-  { name: "TrimCard grid", file: "components/model/TrimCard.tsx", href: "/models/model-3#trims", note: "Featured хувилбар accent tone-той" },
+  { name: "SectionNav", file: "components/model/SectionNav.tsx", href: "/models/model-3#trims", note: "Урт хуудасны sticky бүлгийн цэс" },
+  { name: "TrimCard grid", file: "components/model/TrimCard.tsx", href: "/models/model-3#trims", note: "Ижил 3 үзүүлэлт; featured нь accent + ногоон товч" },
   { name: "FeatureGrid", file: "components/model/FeatureGrid.tsx", href: "/models/model-3", note: "Icon карт, 3 → 2 → 1 багана" },
   { name: "SpecTable", file: "components/model/SpecTable.tsx", href: "/models/model-3#specs", note: "Бүлэглэсэн харьцуулалт" },
   { name: "CtaCard", file: "components/model/CtaCard.tsx", href: "/models/model-3", note: "Хуудасны төгсгөлийн урилга" },

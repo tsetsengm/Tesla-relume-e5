@@ -37,7 +37,15 @@ SUPABASE_PUBLISHABLE_KEY=sb_publishable_...
   хадгалаагүй өөрчлөлттэй гарахад анхааруулна.
 - Зураг: чирж оруулах эсвэл дарж сонгоно (JPG/PNG/WebP/AVIF, 5MB хүртэл) → Supabase Storage `model-images` bucket.
   Browser нь server-ийн өгсөн нэг удаагийн signed URL-аар шууд upload хийнэ (`createImageUpload`).
+- "Зээл" панел: `loan_rate` (жишээ 1.99%), `lease_from` (жишээ $439) → showcase доторх "Ногоон зээл" хайрцаг. Хоёулаа хоосон бол хайрцаг нуугдана.
 - Хадгалахад нүүр хуудас шууд шинэчлэгдэнэ (`updateTag("models")`).
+
+### Дизайны дүрэм (Gestalt)
+
+- **Similarity:** хэсэг/карт бүрт нэг ногоон (primary) товч; хоёрдогч нь `secondary`; `›` = өөр хуудас, `↓` = доорх хэсэг.
+- **Common Region · Proximity:** зээлийн мэдээлэл `LoanBox`-д; банкны лого зөвхөн `BankStrip`-д.
+- **Uniform Connectedness:** нүүрт `ModelStepper`, загварын хуудсанд `SectionNav` (scroll-spy: `lib/useActiveSection.ts`).
+- Sticky дэд цэстэй хэсгүүдэд `scroll-mt-[132–136px]` — Lenis `scroll-margin-top`-ийг өөрөө тооцдог.
 - Шинэ админ нэмэх: Supabase → Authentication-д хэрэглэгч үүсгээд SQL Editor-д
   `insert into public.admins (user_id) select id from auth.users where email = '...';`
 - Эрх: `models` дээр зөвхөн админ `update` хийнэ (RLS). Шинэ загвар нэмэх, устгахыг одоогоор dashboard-оос хийнэ.

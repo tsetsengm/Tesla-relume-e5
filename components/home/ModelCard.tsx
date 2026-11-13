@@ -19,12 +19,19 @@ export function ModelCard({ model }: { model: Model }) {
         <p className="text-[15px] leading-[1.6] text-muted">{model.card.description}</p>
       </div>
       <div className="relative mt-auto flex items-center justify-center gap-3.5">
-        <Button href="#" size="sm">
+        <Button href="#contact" size="sm">
           Одоо захиалах
         </Button>
-        <Button href={model.detailHref ?? `#${model.slug}`} variant="link" size="sm" icon="chevron">
-          Дэлгэрэнгүй
-        </Button>
+        {/* Similarity: same look ⇒ same behaviour. "›" opens another page, "↓" jumps to this model's showcase below */}
+        {model.detailHref ? (
+          <Button href={model.detailHref} variant="link" size="sm" icon="chevron">
+            Дэлгэрэнгүй
+          </Button>
+        ) : (
+          <Button href={`#${model.slug}`} variant="link" size="sm" icon="down">
+            Танилцах
+          </Button>
+        )}
       </div>
     </GlassCard>
   );

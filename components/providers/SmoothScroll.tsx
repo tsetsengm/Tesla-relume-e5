@@ -3,9 +3,11 @@
 import Lenis from "lenis";
 import { useEffect } from "react";
 
-const NAV_OFFSET = -72; // keep section tops clear of the sticky navbar
-
-/** Lenis smooth scrolling plus smooth jumps for same-page anchor links. */
+/**
+ * Lenis smooth scrolling plus smooth jumps for same-page anchor links.
+ * Lenis honours the target's CSS `scroll-margin-top` (72px for section[id] in globals.css,
+ * more where a sticky sub-nav sits under the navbar), so no extra offset is passed here.
+ */
 export function SmoothScroll() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -30,7 +32,7 @@ export function SmoothScroll() {
       const target = document.getElementById(decodeURIComponent(url.hash.slice(1)));
       if (!target) return;
       e.preventDefault();
-      lenis.scrollTo(target, { offset: NAV_OFFSET });
+      lenis.scrollTo(target);
       history.replaceState(null, "", url.hash);
     };
     document.addEventListener("click", onClick, true);

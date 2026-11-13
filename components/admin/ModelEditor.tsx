@@ -30,6 +30,8 @@ type Values = {
   showcase_video_label: string;
   showcase_paragraphs: string;
   showcase_primary_action: string;
+  loan_rate: string;
+  lease_from: string;
 };
 
 const fromRow = (m: Row): Values => ({
@@ -47,6 +49,8 @@ const fromRow = (m: Row): Values => ({
   showcase_video_label: m.showcase_video_label ?? "",
   showcase_paragraphs: m.showcase_paragraphs.join("\n\n"),
   showcase_primary_action: m.showcase_primary_action,
+  loan_rate: m.loan_rate ?? "",
+  lease_from: m.lease_from ?? "",
 });
 
 type ModelEditorProps = {
@@ -186,9 +190,20 @@ export function ModelEditor({ model, prev, next, supabaseUrl, supabaseKey }: Mod
             <Field label="Бичвэр" hint="Догол мөр бүрийн хооронд хоосон мөр үлдээнэ">
               <TextArea name="showcase_paragraphs" value={values.showcase_paragraphs} onChange={(e) => set("showcase_paragraphs", e.target.value)} rows={7} required />
             </Field>
-            <Field label="Товчны текст">
+            <Field label="Ногоон товчны текст" hint="Showcase-ийн гол үйлдэл, жишээ: Одоо захиалах">
               <TextInput name="showcase_primary_action" value={values.showcase_primary_action} onChange={(e) => set("showcase_primary_action", e.target.value)} required />
             </Field>
+          </Panel>
+
+          <Panel title="Зээл" description="Showcase доторх 'Ногоон зээл' хайрцаг. Хоёулаа хоосон бол хайрцаг харагдахгүй">
+            <div className="grid gap-5 sm:grid-cols-2">
+              <Field label="Жилийн хүү" hint="Жишээ: 1.99%">
+                <TextInput name="loan_rate" value={values.loan_rate} onChange={(e) => set("loan_rate", e.target.value)} placeholder="1.99%" />
+              </Field>
+              <Field label="Сарын түрээс эхлэх үнэ" hint="Жишээ: $439">
+                <TextInput name="lease_from" value={values.lease_from} onChange={(e) => set("lease_from", e.target.value)} placeholder="$439" />
+              </Field>
+            </div>
           </Panel>
         </div>
 

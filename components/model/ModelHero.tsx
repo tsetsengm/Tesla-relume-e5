@@ -22,7 +22,7 @@ export function ModelHero({ hero }: { hero: ModelDetail["hero"] }) {
           <Button href="#contact" icon="arrow">
             Test drive
           </Button>
-          <Button href="#specs">
+          <Button href="#specs" variant="secondary">
             Үзүүлэлт харах
           </Button>
         </Reveal>

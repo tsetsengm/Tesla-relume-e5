@@ -13,7 +13,7 @@ export function CtaCard({ tagline, title, text }: CtaCardProps) {
         <Button href="#contact" icon="arrow">
           Test drive
         </Button>
-        <Button href="/#model-3">
+        <Button href="/#model-3" variant="secondary">
           Зээл судлах
         </Button>
       </div>

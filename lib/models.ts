@@ -16,6 +16,10 @@ function toModel(row: Tables<"models">): Model {
     name: row.name,
     detailHref: row.detail_href ?? undefined,
     card: { image: row.card_image, alt: row.card_alt, description: row.card_description },
+    loan:
+      row.loan_rate || row.lease_from
+        ? { rate: row.loan_rate ?? undefined, leaseFrom: row.lease_from ?? undefined }
+        : undefined,
     showcase: {
       media: toShowcaseMedia(row),
       paragraphs: row.showcase_paragraphs,
