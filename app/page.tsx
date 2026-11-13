@@ -40,7 +40,7 @@ export default async function HomePage() {
       </Hero>
 
       <Section id="models" compact>
-        <SectionHeading variant="grow" tagline="Загварууд" title="Өөрт тохирох Tesla-гаа сонго" spacing="compact" />
+        <SectionHeading variant="grow" tagline="Загварууд" title="Өөрт тохирох Tesla-гаа сонго" spacing="compact" wide />
         <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2 xl:grid-cols-4">
           {models.map((model, i) => (
             <Reveal key={model.slug} variant="grow" delay={i * 90}>
