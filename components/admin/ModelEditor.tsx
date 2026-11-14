@@ -32,6 +32,7 @@ type Values = {
   showcase_primary_action: string;
   loan_rate: string;
   lease_from: string;
+  deposit_amount: string;
 };
 
 const fromRow = (m: Row): Values => ({
@@ -51,6 +52,7 @@ const fromRow = (m: Row): Values => ({
   showcase_primary_action: m.showcase_primary_action,
   loan_rate: m.loan_rate ?? "",
   lease_from: m.lease_from ?? "",
+  deposit_amount: m.deposit_amount == null ? "" : String(m.deposit_amount),
 });
 
 type ModelEditorProps = {
@@ -202,6 +204,19 @@ export function ModelEditor({ model, prev, next, supabaseUrl, supabaseKey }: Mod
               </Field>
               <Field label="Сарын түрээс эхлэх үнэ" hint="Жишээ: $439">
                 <TextInput name="lease_from" value={values.lease_from} onChange={(e) => set("lease_from", e.target.value)} placeholder="$439" />
+              </Field>
+              <Field
+                label="Захиалгын урьдчилгаа (₮)"
+                hint="Бөглөвөл 'Одоо захиалах' товч Byl-ээр төлбөр авна. Хоосон бол холбоо барих хэсэг рүү үсэрнэ"
+                className="sm:col-span-2"
+              >
+                <TextInput
+                  name="deposit_amount"
+                  inputMode="numeric"
+                  value={values.deposit_amount}
+                  onChange={(e) => set("deposit_amount", e.target.value.replace(/[^\d]/g, ""))}
+                  placeholder="1000000"
+                />
               </Field>
             </div>
           </Panel>

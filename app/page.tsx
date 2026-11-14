@@ -1,5 +1,6 @@
 import { BankStrip } from "@/components/home/BankLogos";
 import { LoanBox } from "@/components/home/LoanBox";
+import { OrderButton } from "@/components/home/OrderButton";
 import { ModelCard } from "@/components/home/ModelCard";
 import { ModelStepper } from "@/components/home/ModelStepper";
 import { RobotaxiSlider } from "@/components/home/RobotaxiSlider";
@@ -66,10 +67,15 @@ export default async function HomePage() {
                 paragraphs={model.showcase.paragraphs}
                 reverse={i % 2 === 1}
               >
-                {model.loan && <LoanBox loan={model.loan} />}
+                {(model.loan || model.deposit) && <LoanBox loan={model.loan} deposit={model.deposit} />}
                 {/* Similarity: one green action per section */}
                 <div className="flex flex-wrap items-center gap-6">
-                  <Button href="#contact">{model.showcase.primaryAction}</Button>
+                  {/* Same label ⇒ same action as the card: a deposit model opens the Byl checkout */}
+                  {model.deposit ? (
+                    <OrderButton slug={model.slug} label={model.showcase.primaryAction} />
+                  ) : (
+                    <Button href="#contact">{model.showcase.primaryAction}</Button>
+                  )}
                   {model.detailHref && (
                     <Button href={model.detailHref} variant="link" icon="chevron">
                       Дэлгэрэнгүй

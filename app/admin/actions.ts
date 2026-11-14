@@ -70,6 +70,7 @@ export async function updateModel(_prev: FormState, formData: FormData): Promise
     showcase_primary_action: text(formData, "showcase_primary_action"),
     loan_rate: text(formData, "loan_rate") || null,
     lease_from: text(formData, "lease_from") || null,
+    deposit_amount: text(formData, "deposit_amount") ? Number(text(formData, "deposit_amount")) : null,
     // Paragraphs are separated by a blank line in the textarea
     showcase_paragraphs: text(formData, "showcase_paragraphs")
       .split(/\n\s*\n/)
@@ -90,6 +91,9 @@ export async function updateModel(_prev: FormState, formData: FormData): Promise
   ].filter(Boolean);
   if (missing.length) return { message: `Хоосон байж болохгүй: ${missing.join(", ")}.` };
   if (!Number.isInteger(sortOrder)) return { message: "Дараалал бүхэл тоо байх ёстой." };
+  if (update.deposit_amount != null && !(Number.isInteger(update.deposit_amount) && update.deposit_amount >= 10)) {
+    return { message: "Урьдчилгаа 10₮-өөс багагүй бүхэл тоо байх ёстой." };
+  }
   for (const src of [update.card_image!, showcaseImage!]) {
     if (!isAllowedImageSrc(src, url)) return { message: "Зураг upload хийсэн эсвэл /assets/ гэж эхэлсэн зам байх ёстой." };
   }

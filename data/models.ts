@@ -12,6 +12,8 @@ export type Model = {
   card: { image: string; alt: string; description: string };
   /** Green-loan terms; shown in the showcase loan box when present */
   loan?: { rate?: string; leaseFrom?: string };
+  /** Order deposit in ₮. When set, "Одоо захиалах" starts a Byl checkout instead of jumping to #contact */
+  deposit?: number;
   showcase: {
     media: ShowcaseMedia;
     paragraphs: string[];

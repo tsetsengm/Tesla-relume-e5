@@ -31,6 +31,7 @@ export type Database = {
           card_description: string;
           card_image: string;
           created_at: string;
+          deposit_amount: number | null;
           detail_href: string | null;
           id: number;
           is_published: boolean;
@@ -53,6 +54,7 @@ export type Database = {
           card_description: string;
           card_image: string;
           created_at?: string;
+          deposit_amount?: number | null;
           detail_href?: string | null;
           id?: never;
           is_published?: boolean;
@@ -75,6 +77,7 @@ export type Database = {
           card_description?: string;
           card_image?: string;
           created_at?: string;
+          deposit_amount?: number | null;
           detail_href?: string | null;
           id?: never;
           is_published?: boolean;
@@ -91,6 +94,48 @@ export type Database = {
           slug?: string;
           sort_order?: number;
           updated_at?: string;
+        };
+        Relationships: [];
+      };
+      orders: {
+        Row: {
+          amount: number;
+          byl_checkout_id: number | null;
+          created_at: string;
+          customer_email: string | null;
+          customer_name: string | null;
+          customer_phone: string | null;
+          id: string;
+          model_name: string;
+          model_slug: string;
+          paid_at: string | null;
+          status: string;
+        };
+        Insert: {
+          amount: number;
+          byl_checkout_id?: number | null;
+          created_at?: string;
+          customer_email?: string | null;
+          customer_name?: string | null;
+          customer_phone?: string | null;
+          id?: string;
+          model_name: string;
+          model_slug: string;
+          paid_at?: string | null;
+          status?: string;
+        };
+        Update: {
+          amount?: number;
+          byl_checkout_id?: number | null;
+          created_at?: string;
+          customer_email?: string | null;
+          customer_name?: string | null;
+          customer_phone?: string | null;
+          id?: string;
+          model_name?: string;
+          model_slug?: string;
+          paid_at?: string | null;
+          status?: string;
         };
         Relationships: [];
       };

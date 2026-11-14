@@ -6,8 +6,9 @@ import type { Model } from "@/data/models";
  * Common Region: every loan fact for a model (rate, lease, partner banks, the loan CTA)
  * in one bordered box, instead of spread across the paragraph, logos and button row.
  */
-export function LoanBox({ loan }: { loan: NonNullable<Model["loan"]> }) {
+export function LoanBox({ loan = {}, deposit }: { loan?: Model["loan"]; deposit?: number }) {
   const facts = [
+    deposit && { label: "Урьдчилгаа", value: `${deposit.toLocaleString("en-US")}₮` },
     loan.rate && { label: "Ногоон зээл", value: `жилийн ${loan.rate}` },
     loan.leaseFrom && { label: "Түрээс", value: `сард ${loan.leaseFrom}-өөс` },
     { label: "Банк", value: partnerBanks.map((b) => b.name).join(" · "), small: true },

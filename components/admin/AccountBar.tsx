@@ -10,6 +10,9 @@ export function AccountBar({ admin }: { admin: Admin }) {
         Нэвтэрсэн: <span className="text-ink">{admin.email}</span>
       </span>
       <div className="flex items-center gap-5">
+        <Link href="/admin/orders" className="text-muted transition-colors hover:text-ink">
+          Захиалгууд
+        </Link>
         <Link href="/" target="_blank" className="inline-flex items-center gap-1.5 text-muted transition-colors hover:text-ink">
           Сайтыг харах <ExternalLink className="size-3.5" aria-hidden />
         </Link>

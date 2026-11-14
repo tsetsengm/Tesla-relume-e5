@@ -20,6 +20,7 @@ function toModel(row: Tables<"models">): Model {
       row.loan_rate || row.lease_from
         ? { rate: row.loan_rate ?? undefined, leaseFrom: row.lease_from ?? undefined }
         : undefined,
+    deposit: row.deposit_amount ?? undefined,
     showcase: {
       media: toShowcaseMedia(row),
       paragraphs: row.showcase_paragraphs,

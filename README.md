@@ -40,6 +40,26 @@ SUPABASE_PUBLISHABLE_KEY=sb_publishable_...
 - "Зээл" панел: `loan_rate` (жишээ 1.99%), `lease_from` (жишээ $439) → showcase доторх "Ногоон зээл" хайрцаг. Хоёулаа хоосон бол хайрцаг нуугдана.
 - Хадгалахад нүүр хуудас шууд шинэчлэгдэнэ (`updateTag("models")`).
 
+### Byl төлбөр — "Одоо захиалах"
+
+Загварт `deposit_amount` (урьдчилгаа, ₮) байвал карт болон showcase-ийн "Одоо захиалах" товч Byl Checkout нээнэ; хоосон бол `#contact` руу үсэрнэ. Админ → загвар → "Зээл" панел → "Захиалгын урьдчилгаа".
+
+```
+Товч → startCheckout (app/order/actions.ts): orders-д pending мөр → POST /v1/projects/:id/checkouts → Byl хуудас руу redirect
+Byl → POST /api/byl/webhook (checkout.completed, Byl-Signature HMAC-SHA256) → orders.status = paid
+Byl → /order/success?ref=<order id> (webhook ирээгүй бол Byl-ээс checkout-ийг шууд шалгана)
+```
+
+- Дүнг үргэлж DB-ээс авна, form-оос хэзээ ч авахгүй. Захиалгууд: `/admin/orders` (нэр, утас, имэйл, төлөв).
+- `orders` хүснэгтэд RLS: зөвхөн админ уншина; бичихийг зөвхөн server `SUPABASE_SECRET_KEY`-ээр хийнэ.
+- Env (`.env.local` + Vercel, бүгд server-only):
+  - `BYL_PROJECT_ID`, `BYL_TOKEN` — Byl → төсөл → Тохиргоо → API токэн
+  - `BYL_WEBHOOK_SECRET` — Byl → Webhooks → endpoint `https://<домэйн>/api/byl/webhook` → Signing secret
+  - `SUPABASE_SECRET_KEY` — Supabase → Settings → API Keys → Secret key
+- Test горимд гүйлгээ бүр 100₮. Бодит төлбөр: бизнес баталгаажуулалт + Byl багц + төслийн данс → Live горим.
+- Webhook `localhost` руу ирэхгүй — локалд success хуудас Byl-ээс төлөвийг өөрөө шалгана.
+- Код: `lib/byl.ts`, `lib/orders.ts`, `lib/supabase-admin.ts`, `components/home/OrderButton.tsx`.
+
 ### Дизайны дүрэм (Gestalt)
 
 - **Similarity:** хэсэг/карт бүрт нэг ногоон (primary) товч; хоёрдогч нь `secondary`; `›` = өөр хуудас, `↓` = доорх хэсэг.
