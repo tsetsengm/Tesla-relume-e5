@@ -90,7 +90,7 @@ export async function placeOrder(_prev: OrderState, formData: FormData): Promise
         orderRef: order.id,
         customerEmail: values.email,
         successUrl: `${origin}/order/success?ref=${order.id}`,
-        cancelUrl: `${origin}/order/${model.slug}`,
+        cancelUrl: `${origin}/order/${model.slug}?canceled=1`,
       });
       await db.from("orders").update({ byl_checkout_id: checkout.id }).eq("id", order.id);
       next = checkout.url;

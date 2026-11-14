@@ -39,6 +39,45 @@ export const principles = [
   },
 ];
 
+/** Don Norman's seven principles of interaction, as applied to the purchase flow (card → /order → Byl → confirmation). */
+export const interactionPrinciples = [
+  {
+    law: "Discoverability",
+    title: "Худалдан авах зам үргэлж харагдана",
+    text: "Карт бүр урьдчилгааг харуулна. Model 3 хуудасны sticky цэсний төгсгөлд 'Захиалах' товч үргэлж байна.",
+  },
+  {
+    law: "Feedback",
+    title: "Үйлдэл бүрт хариу",
+    text: "Талбар зөв бол ✓, буруу бол шалтгаан. Илгээх үед spinner. Төлбөр хүлээж байхад хуудас өөрөө шалгана.",
+  },
+  {
+    law: "Conceptual model",
+    title: "Бүх замыг урьдаас харуулна",
+    text: "Мэдээлэл → Төлбөр → Баталгаажуулалт гэсэн 3 алхам. Одоо урьдчилгаа, үлдэгдлийг гэрээ байгуулахад гэж тайлбарлана.",
+  },
+  {
+    law: "Affordances",
+    title: "Дарж болох зүйл дарагдахаар харагдана",
+    text: "Хувилбарын карт бүхэлдээ дарагдана, hover-т өргөгдөнө. Илгээж байхад товч, талбар идэвхгүй болно.",
+  },
+  {
+    law: "Signifiers",
+    title: "Тэмдэг юу болохыг хэлнэ",
+    text: "🔒 = аюулгүй төлбөр, ↗ = byl.mn руу шилжинэ, * = заавал. Төлбөрийн хэлбэрүүд chip-ээр.",
+  },
+  {
+    law: "Mapping",
+    title: "Сонголт ба үр дүн хажуу хажууд",
+    text: "Баруун талд хувилбар сонгоход зүүн талын захиалгын хураангуй (нэр, үнэ) тэр даруй солигдоно.",
+  },
+  {
+    law: "Constraints",
+    title: "Алдаа гаргах боломжгүй болгоно",
+    text: "Утас зөвхөн 8 оронтой тоо (9911 2233 гэж бүлэглэнэ). Давхар илгээлтгүй. Алдаатай бол эхний буруу талбар руу очно.",
+  },
+];
+
 export type ColorToken = { name: string; usage: string };
 
 export const colorGroups: { title: string; tokens: ColorToken[] }[] = [

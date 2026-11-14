@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { GlassCard } from "@/components/ui/GlassCard";
 import type { Model } from "@/data/models";
+import { cn } from "@/lib/cn";
 
 export function ModelCard({ model }: { model: Model }) {
   return (
@@ -18,7 +19,13 @@ export function ModelCard({ model }: { model: Model }) {
         <h3 className="heading-5">{model.name}</h3>
         <p className="text-[15px] leading-[1.6] text-muted">{model.card.description}</p>
       </div>
-      <div className="relative mt-auto flex items-center justify-center gap-3.5">
+      {/* Discoverability: the price of starting an order is visible before clicking */}
+      {model.deposit && (
+        <p className="relative -mb-2 mt-auto text-xs text-muted">
+          Урьдчилгаа <span className="font-semibold text-ink">{model.deposit.toLocaleString("en-US")}₮</span>-өөр онлайн захиална
+        </p>
+      )}
+      <div className={cn("relative flex items-center justify-center gap-3.5", !model.deposit && "mt-auto")}>
         <Button href={`/order/${model.slug}`} size="sm">
           Одоо захиалах
         </Button>

@@ -25,6 +25,7 @@ import {
   layoutTokens,
   motions,
   pageSections,
+  interactionPrinciples,
   principles,
   radii,
   sgSections,
@@ -85,6 +86,20 @@ export default async function StyleguidePage() {
             <div className="grid gap-[18px] sm:grid-cols-2 xl:grid-cols-4">
               {principles.map((p) => (
                 <GlassCard key={p.title} className="p-6">
+                  <p className="tagline relative mb-3 text-[10px]">{p.law}</p>
+                  <h3 className="relative mb-3 text-[17px] font-semibold leading-snug">{p.title}</h3>
+                  <p className="relative text-sm leading-[1.6] text-muted">{p.text}</p>
+                </GlassCard>
+              ))}
+            </div>
+
+            <h3 className="mt-12 mb-2 text-[17px] font-semibold">Харилцааны 7 зарчим — Don Norman</h3>
+            <p className="mb-6 max-w-[640px] text-sm leading-[1.6] text-muted">
+              Худалдан авах урсгалд (карт → /order → Byl → баталгаажуулалт) мөрддөг дүрэм.
+            </p>
+            <div className="grid gap-[18px] sm:grid-cols-2 xl:grid-cols-4">
+              {interactionPrinciples.map((p) => (
+                <GlassCard key={p.law} className="p-6">
                   <p className="tagline relative mb-3 text-[10px]">{p.law}</p>
                   <h3 className="relative mb-3 text-[17px] font-semibold leading-snug">{p.title}</h3>
                   <p className="relative text-sm leading-[1.6] text-muted">{p.text}</p>

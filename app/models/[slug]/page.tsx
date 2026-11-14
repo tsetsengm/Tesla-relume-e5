@@ -57,7 +57,7 @@ async function ModelContent({ params }: { params: PageProps<"/models/[slug]">["p
 
       {/* Uniform Connectedness: one sticky bar links every chapter of the page */}
       <div className="relative">
-      <SectionNav items={chapters} />
+      <SectionNav items={chapters} cta={{ href: `/order/${slug}`, label: "Захиалах" }} />
 
       <Section id="trims" className={CHAPTER_OFFSET}>
         <SectionHeading tagline={trims.tagline} title={trims.title} text={trims.text} />

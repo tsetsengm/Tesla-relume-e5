@@ -14,6 +14,8 @@ type ButtonProps = {
   icon?: "arrow" | "chevron" | "down";
   href?: string;
   type?: "button" | "submit";
+  /** <button> only — also dims the button and drops the hover lift */
+  disabled?: boolean;
   className?: string;
 };
 
@@ -33,7 +35,7 @@ const sizes: Record<Size, string> = {
   sm: "px-4 py-2 text-sm",
 };
 
-export function Button({ children, variant = "primary", size = "md", icon, href, type = "button", className }: ButtonProps) {
+export function Button({ children, variant = "primary", size = "md", icon, href, type = "button", disabled, className }: ButtonProps) {
   const classes = cn(base, variants[variant], variant !== "link" && sizes[size], variant === "link" && size === "sm" && "text-sm", variant === "link" && size === "md" && "text-[15px]", className);
 
   const iconEl = icon && (
@@ -54,7 +56,11 @@ export function Button({ children, variant = "primary", size = "md", icon, href,
 
   if (!href) {
     return (
-      <button type={type} className={classes}>
+      <button
+        type={type}
+        disabled={disabled}
+        className={cn(classes, "disabled:pointer-events-none disabled:translate-y-0 disabled:opacity-60 disabled:shadow-none")}
+      >
         {children}
         {iconEl}
       </button>

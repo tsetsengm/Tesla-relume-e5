@@ -36,7 +36,7 @@ export async function getOrderStatus(orderId: string) {
   if (!UUID.test(orderId)) return null;
   const { data: order } = await createSupabaseAdmin()
     .from("orders")
-    .select("id, model_name, amount, status, byl_checkout_id")
+    .select("id, model_slug, model_name, trim, amount, status, byl_checkout_id")
     .eq("id", orderId)
     .maybeSingle();
   if (!order) return null;
