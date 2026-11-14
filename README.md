@@ -42,10 +42,13 @@ SUPABASE_PUBLISHABLE_KEY=sb_publishable_...
 
 ### Byl төлбөр — "Одоо захиалах"
 
-Загварт `deposit_amount` (урьдчилгаа, ₮) байвал карт болон showcase-ийн "Одоо захиалах" товч Byl Checkout нээнэ; хоосон бол `#contact` руу үсэрнэ. Админ → загвар → "Зээл" панел → "Захиалгын урьдчилгаа".
+Бүх "Одоо захиалах" товч (карт, showcase, Model 3-ын trim карт `?trim=…`) захиалгын хуудас `/order/<slug>` руу орно:
+01 нэр, утас, имэйл → 02 хувилбар (model-details-д trim байвал) → 03 төлбөр.
+Загварт `deposit_amount` (урьдчилгаа, ₮) байвал "Byl-ээр төлөх" → byl.mn; хоосон бол "Захиалга илгээх" (төлбөргүй хүсэлт, status `request`).
+Урьдчилгааг: Админ → загвар → "Зээл" панел → "Захиалгын урьдчилгаа".
 
 ```
-Товч → startCheckout (app/order/actions.ts): orders-д pending мөр → POST /v1/projects/:id/checkouts → Byl хуудас руу redirect
+Захиалгын хуудас → placeOrder (app/order/actions.ts): orders-д pending мөр (нэр, утас, хувилбар) → POST /v1/projects/:id/checkouts → byl.mn руу redirect
 Byl → POST /api/byl/webhook (checkout.completed, Byl-Signature HMAC-SHA256) → orders.status = paid
 Byl → /order/success?ref=<order id> (webhook ирээгүй бол Byl-ээс checkout-ийг шууд шалгана)
 ```
@@ -58,7 +61,7 @@ Byl → /order/success?ref=<order id> (webhook ирээгүй бол Byl-ээс 
   - `SUPABASE_SECRET_KEY` — Supabase → Settings → API Keys → Secret key
 - Test горимд гүйлгээ бүр 100₮. Бодит төлбөр: бизнес баталгаажуулалт + Byl багц + төслийн данс → Live горим.
 - Webhook `localhost` руу ирэхгүй — локалд success хуудас Byl-ээс төлөвийг өөрөө шалгана.
-- Код: `lib/byl.ts`, `lib/orders.ts`, `lib/supabase-admin.ts`, `components/home/OrderButton.tsx`.
+- Код: `app/order/[slug]/page.tsx`, `components/order/OrderForm.tsx`, `lib/byl.ts`, `lib/orders.ts`, `lib/supabase-admin.ts`.
 
 ### Дизайны дүрэм (Gestalt)
 

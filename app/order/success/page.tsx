@@ -39,7 +39,23 @@ async function OrderStatus({ searchParams }: { searchParams: PageProps<"/order/s
     );
   }
 
-  const amount = `${order.amount.toLocaleString("en-US")}₮`;
+  const amount = `${(order.amount ?? 0).toLocaleString("en-US")}₮`;
+
+  if (order.status === "request") {
+    return (
+      <>
+        <span className="tagline">Хүсэлт илгээгдлээ</span>
+        <h1 className="heading-2">Захиалгын хүсэлт хүлээн авлаа</h1>
+        <p className="text-lg leading-[1.65] text-muted">
+          {order.model_name}-ийн захиалгын хүсэлтийг хүлээн авлаа. Манай борлуулалтын менежер 24 цагийн дотор тантай холбогдож үнэ, хүргэлтийн
+          нөхцөлийг танилцуулна.
+        </p>
+        <Button href="/" icon="arrow">
+          Нүүр хуудас руу буцах
+        </Button>
+      </>
+    );
+  }
 
   if (order.status === "paid") {
     return (

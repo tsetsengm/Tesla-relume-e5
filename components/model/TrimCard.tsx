@@ -2,7 +2,8 @@ import { Button } from "@/components/ui/Button";
 import { GlassCard } from "@/components/ui/GlassCard";
 import type { Trim } from "@/data/model-details/types";
 
-export function TrimCard({ trim }: { trim: Trim }) {
+/** `orderHref`: the model's order page, with this trim preselected */
+export function TrimCard({ trim, orderHref }: { trim: Trim; orderHref: string }) {
   return (
     <GlassCard as="article" interactive tone={trim.featured ? "accent" : "default"} className="flex h-full flex-col gap-6 px-7 py-8">
       {trim.badge && (
@@ -26,7 +27,7 @@ export function TrimCard({ trim }: { trim: Trim }) {
         ))}
       </ul>
       {/* Similarity: only the featured trim gets the green button */}
-      <Button href="#contact" variant={trim.featured ? "primary" : "secondary"} className="relative mt-auto">
+      <Button href={orderHref} variant={trim.featured ? "primary" : "secondary"} className="relative mt-auto">
         Одоо захиалах
       </Button>
     </GlassCard>

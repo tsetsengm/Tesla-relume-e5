@@ -36,7 +36,8 @@ export default function ModelPage({ params }: PageProps<"/models/[slug]">) {
 }
 
 async function ModelContent({ params }: { params: PageProps<"/models/[slug]">["params"] }) {
-  const detail = getModelDetail((await params).slug);
+  const { slug } = await params;
+  const detail = getModelDetail(slug);
   if (!detail) notFound();
 
   const { hero, trims, highlights, app, safety, charging, performance, specs, cta } = detail;
@@ -63,7 +64,7 @@ async function ModelContent({ params }: { params: PageProps<"/models/[slug]">["p
         <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
           {trims.items.map((trim, i) => (
             <Reveal key={trim.name} delay={i * 90}>
-              <TrimCard trim={trim} />
+              <TrimCard trim={trim} orderHref={`/order/${slug}?trim=${encodeURIComponent(trim.name)}`} />
             </Reveal>
           ))}
         </div>

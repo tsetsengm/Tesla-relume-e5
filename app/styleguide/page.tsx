@@ -420,7 +420,7 @@ export default async function StyleguidePage() {
                 </Demo>
                 <Demo name="TrimCard" file="components/model/TrimCard.tsx" description="featured үед accent tone болон badge.">
                   <div className="max-w-[360px]">
-                    <TrimCard trim={model3.trims.items[2]} />
+                    <TrimCard trim={model3.trims.items[2]} orderHref="/order/model-3" />
                   </div>
                 </Demo>
               </div>

@@ -7,18 +7,24 @@ export const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{1
 /**
  * Marks a pending order as paid from a completed Byl checkout. Idempotent: an already-paid order is left as is,
  * so webhook retries and the success-page fallback can both call it safely.
+ * Customer details come from our order form; Byl's values only fill gaps.
  */
 export async function markOrderPaid(orderId: string, checkout: BylCheckoutCompleted) {
-  const name = checkout.custom_fields?.find((f) => f.key === "name")?.value ?? null;
-  const { error } = await createSupabaseAdmin()
+  const fromByl = {
+    ...(checkout.customer_email && { customer_email: checkout.customer_email }),
+    ...(checkout.phone_number && { customer_phone: checkout.phone_number }),
+  };
+  const db = createSupabaseAdmin();
+  const { data: order } = await db.from("orders").select("customer_email, customer_phone").eq("id", orderId).maybeSingle();
+
+  const { error } = await db
     .from("orders")
     .update({
       status: "paid",
       paid_at: new Date().toISOString(),
       byl_checkout_id: checkout.id,
-      customer_name: name,
-      customer_phone: checkout.phone_number ?? null,
-      customer_email: checkout.customer_email,
+      ...(!order?.customer_email && fromByl.customer_email && { customer_email: fromByl.customer_email }),
+      ...(!order?.customer_phone && fromByl.customer_phone && { customer_phone: fromByl.customer_phone }),
     })
     .eq("id", orderId)
     .eq("status", "pending");

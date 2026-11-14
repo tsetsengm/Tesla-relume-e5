@@ -99,7 +99,7 @@ export type Database = {
       };
       orders: {
         Row: {
-          amount: number;
+          amount: number | null;
           byl_checkout_id: number | null;
           created_at: string;
           customer_email: string | null;
@@ -108,11 +108,13 @@ export type Database = {
           id: string;
           model_name: string;
           model_slug: string;
+          note: string | null;
           paid_at: string | null;
           status: string;
+          trim: string | null;
         };
         Insert: {
-          amount: number;
+          amount: number | null;
           byl_checkout_id?: number | null;
           created_at?: string;
           customer_email?: string | null;
@@ -121,11 +123,13 @@ export type Database = {
           id?: string;
           model_name: string;
           model_slug: string;
+          note: string | null;
           paid_at?: string | null;
           status?: string;
+          trim?: string | null;
         };
         Update: {
-          amount?: number;
+          amount?: number | null;
           byl_checkout_id?: number | null;
           created_at?: string;
           customer_email?: string | null;
@@ -134,8 +138,10 @@ export type Database = {
           id?: string;
           model_name?: string;
           model_slug?: string;
+          note?: string | null;
           paid_at?: string | null;
           status?: string;
+          trim?: string | null;
         };
         Relationships: [];
       };

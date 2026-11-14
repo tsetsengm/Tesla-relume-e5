@@ -22,6 +22,8 @@ export type CheckoutInput = {
   orderRef: string;
   successUrl: string;
   cancelUrl: string;
+  /** Collected on our order page; Byl emails the receipt here */
+  customerEmail: string;
 };
 
 /** POST /v1/projects/:id/checkouts → the hosted payment page URL. */
@@ -47,9 +49,9 @@ export async function createCheckout(input: CheckoutInput): Promise<{ id: number
       client_reference_id: input.orderRef,
       success_url: input.successUrl,
       cancel_url: input.cancelUrl,
-      phone_number_collection: true,
-      email_collection: true,
-      custom_fields: [{ key: "name", label: "Овог нэр", type: "text" }],
+      // Name, phone and email are already collected on /order/[slug] — Byl only takes the payment
+      customer_email: input.customerEmail,
+      email_collection: false,
     }),
     cache: "no-store",
   });
