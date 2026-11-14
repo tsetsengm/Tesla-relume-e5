@@ -33,7 +33,7 @@ export const model3: ModelDetail = {
     tagline: "Спорт седан",
     title: "Model 3",
     text: "Tesla-гийн хамгийн хямд, ашиглалтын зардал хамгийн бага загвар. Хурдан хурдатгал, хол явах зай — бүгд нэг дор.",
-    image: "/assets/images/feature-model-3.jpg",
+    image: "/assets/images/model-3-hero.jpg",
     stats: [
       { value: "584 км", label: "Явах зай хүртэл" },
       { value: "2.9 сек", label: "0–96 км/ц" },

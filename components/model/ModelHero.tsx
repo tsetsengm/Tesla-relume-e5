@@ -5,7 +5,7 @@ import type { ModelDetail } from "@/data/model-details/types";
 
 export function ModelHero({ hero }: { hero: ModelDetail["hero"] }) {
   return (
-    <Hero image={hero.image}>
+    <Hero image={hero.image} media="right">
       <div className="flex max-w-[768px] flex-col gap-5">
         <Reveal>
           <p className="tagline">{hero.tagline}</p>
