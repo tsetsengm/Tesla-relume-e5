@@ -38,7 +38,7 @@ export function FeatureGrid({ items }: { items: Feature[] }) {
 export function PowerBanner({ feature }: { feature: Feature }) {
   return (
     <Reveal className="mt-[18px]">
-      <GlassCard className="flex gap-[22px] p-[30px] max-sm:flex-col">
+      <GlassCard spotlight className="flex gap-[22px] p-[30px] [--spot-size:560px] max-sm:flex-col">
         <IconBadge icon={feature.icon} />
         <div>
           <h3 className="relative mb-2.5 text-[19px] font-bold">{feature.title}</h3>

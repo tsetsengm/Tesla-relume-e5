@@ -9,7 +9,9 @@ const cell = "border-b border-line px-6 py-3.5 text-left align-top";
 export function SpecTable({ columns, groups }: { columns: string[]; groups: SpecGroup[] }) {
   return (
     <Reveal>
-      <GlassCard tone="strong" className="overflow-x-auto">
+      {/* Scroll lives on an inner box: the spotlight's border ring sits 1px outside the card and would add a scrollbar */}
+      <GlassCard tone="strong" spotlight className="[--spot-size:600px]">
+        <div className="overflow-x-auto rounded-[inherit]">
         <table className="relative w-full min-w-[640px] border-collapse text-[15px]">
           <thead>
             <tr>
@@ -47,6 +49,7 @@ export function SpecTable({ columns, groups }: { columns: string[]; groups: Spec
             ))}
           </tbody>
         </table>
+        </div>
       </GlassCard>
     </Reveal>
   );

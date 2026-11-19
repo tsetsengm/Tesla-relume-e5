@@ -18,6 +18,8 @@ type FeatureShowcaseProps = {
 export function FeatureShowcase({ media, title, tagline, paragraphs, reverse = false, children }: FeatureShowcaseProps) {
   return (
     <article
+      // Picked up by components/providers/PointerEffects; the glow is the spotlight-glow child below (::after is the hairline)
+      data-spotlight
       className={cn(
         "group hairline relative flex h-[640px] overflow-hidden rounded-panel border border-line-strong bg-glass-2 shadow-panel backdrop-blur-[18px]",
         "max-lg:h-auto max-lg:flex-col",
@@ -65,6 +67,7 @@ export function FeatureShowcase({ media, title, tagline, paragraphs, reverse = f
         </div>
         {children}
       </div>
+      <span aria-hidden className="spotlight-glow [--spot-size:640px]" />
     </article>
   );
 }

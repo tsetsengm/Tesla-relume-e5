@@ -5,7 +5,7 @@ import type { Trim } from "@/data/model-details/types";
 /** `orderHref`: the model's order page, with this trim preselected */
 export function TrimCard({ trim, orderHref }: { trim: Trim; orderHref: string }) {
   return (
-    <GlassCard as="article" interactive tone={trim.featured ? "accent" : "default"} className="flex h-full flex-col gap-6 px-7 py-8">
+    <GlassCard as="article" interactive tilt tone={trim.featured ? "accent" : "default"} className="flex h-full flex-col gap-6 px-7 py-8">
       {trim.badge && (
         <span className="relative self-start rounded-full border border-accent/25 bg-accent/10 px-[11px] py-[5px] text-xs font-semibold text-accent">
           {trim.badge}
@@ -27,7 +27,7 @@ export function TrimCard({ trim, orderHref }: { trim: Trim; orderHref: string })
         ))}
       </ul>
       {/* Similarity: only the featured trim gets the green button */}
-      <Button href={orderHref} variant={trim.featured ? "primary" : "secondary"} className="relative mt-auto">
+      <Button href={orderHref} variant={trim.featured ? "primary" : "secondary"} className="relative mt-auto" magnetic>
         Одоо захиалах
       </Button>
     </GlassCard>

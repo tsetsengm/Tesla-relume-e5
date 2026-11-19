@@ -375,7 +375,8 @@ export default async function StyleguidePage() {
                 description={
                   <>
                     Pill хэлбэр, 600 жин. <Code>variant</Code>: primary · secondary · link, <Code>size</Code>: md · sm, <Code>icon</Code>: arrow · chevron. Hover
-                    дээр 2px дээш. <Code>#</Code>-ээр эхэлсэн href нь Lenis-ээр зөөлөн scroll хийнэ.
+                    дээр 2px дээш. <Code>#</Code>-ээр эхэлсэн href нь Lenis-ээр зөөлөн scroll хийнэ. <Code>magnetic</Code> үед курсор руу татагдана
+                    (&quot;Одоо захиалах&quot;).
                   </>
                 }
                 className="flex flex-col gap-6"
@@ -384,7 +385,7 @@ export default async function StyleguidePage() {
                   <Button href="#components" icon="arrow">
                     Test drive
                   </Button>
-                  <Button href="#components">Одоо захиалах</Button>
+                  <Button href="#components" magnetic>Одоо захиалах</Button>
                   <Button href="#components" variant="secondary">
                     Холбоо барих
                   </Button>
@@ -410,15 +411,23 @@ export default async function StyleguidePage() {
                 file="components/ui/GlassCard.tsx"
                 description={
                   <>
-                    <Code>tone</Code>: default · strong · accent. <Code>interactive</Code> үед hover дээр өргөгдөж, ногоон гэрэл тусна.
+                    <Code>tone</Code>: default · strong · accent. <Code>interactive</Code> үед hover дээр өргөгдөж, ногоон гэрэл болон border гэрэл
+                    курсорыг дагана (spotlight). <Code>tilt</Code> нэмбэл курсор руу 3D хазайна; хүүхдүүд <Code>--px</Code> / <Code>--py</Code>-ийг
+                    уншиж parallax хийж болно.
                   </>
                 }
                 className="grid gap-[18px] sm:grid-cols-3"
               >
                 {(["default", "strong", "accent"] as const).map((tone) => (
                   <GlassCard key={tone} tone={tone} interactive className="p-6">
-                    <p className="relative font-mono text-[13px]">tone=&quot;{tone}&quot;</p>
-                    <p className="relative mt-2 text-[13px] text-muted">Hover хийж үзээрэй</p>
+                    <p className="relative font-mono text-[13px]">tone=&quot;{tone}&quot; interactive</p>
+                    <p className="relative mt-2 text-[13px] text-muted">Курсороо хөдөлгөж үзээрэй</p>
+                  </GlassCard>
+                ))}
+                {(["default", "strong", "accent"] as const).map((tone) => (
+                  <GlassCard key={`${tone}-tilt`} tone={tone} interactive tilt className="p-6">
+                    <p className="relative font-mono text-[13px]">tone=&quot;{tone}&quot; interactive tilt</p>
+                    <p className="relative mt-2 text-[13px] text-muted">Булан руу нь аваачаад үзээрэй</p>
                   </GlassCard>
                 ))}
               </Demo>
@@ -494,7 +503,7 @@ export default async function StyleguidePage() {
             intro={
               <>
                 Easing: <Code>ease-soft</Code> = <Code>cubic-bezier(.22, .7, .2, 1)</Code>. <Code>prefers-reduced-motion</Code> асаалттай үед reveal шууд
-                харагдаж, Lenis болон slider-ийн transition унтарна.
+                харагдаж, Lenis, slider, tilt, magnetic, hero parallax унтарна. Курсортой эффектүүд (spotlight, tilt, magnetic) зөвхөн mouse дээр ажиллана.
               </>
             }
           >

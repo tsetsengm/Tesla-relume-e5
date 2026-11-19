@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
+import { MagneticLink } from "@/components/ui/MagneticLink";
 
 type Variant = "primary" | "secondary" | "link";
 type Size = "md" | "sm";
@@ -17,10 +18,12 @@ type ButtonProps = {
   /** <button> only — also dims the button and drops the hover lift */
   disabled?: boolean;
   className?: string;
+  /** Links only — the button leans toward the cursor and springs back (fine pointers, motion allowed) */
+  magnetic?: boolean;
 };
 
 const base =
-  "group inline-flex items-center justify-center gap-2 whitespace-nowrap border font-semibold leading-[1.4] transition-[transform,box-shadow,background-color,border-color,color] duration-200";
+  "group inline-flex items-center justify-center gap-2 whitespace-nowrap border font-semibold leading-[1.4] transition-[translate,box-shadow,background-color,border-color,color] duration-200";
 
 const variants: Record<Variant, string> = {
   primary:
@@ -35,7 +38,7 @@ const sizes: Record<Size, string> = {
   sm: "px-4 py-2 text-sm",
 };
 
-export function Button({ children, variant = "primary", size = "md", icon, href, type = "button", disabled, className }: ButtonProps) {
+export function Button({ children, variant = "primary", size = "md", icon, href, type = "button", disabled, className, magnetic }: ButtonProps) {
   const classes = cn(base, variants[variant], variant !== "link" && sizes[size], variant === "link" && size === "sm" && "text-sm", variant === "link" && size === "md" && "text-[15px]", className);
 
   const iconEl = icon && (
@@ -64,6 +67,15 @@ export function Button({ children, variant = "primary", size = "md", icon, href,
         {children}
         {iconEl}
       </button>
+    );
+  }
+
+  if (magnetic) {
+    return (
+      <MagneticLink href={href} className={classes}>
+        {children}
+        {iconEl}
+      </MagneticLink>
     );
   }
 

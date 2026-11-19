@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import { PointerEffects } from "@/components/providers/PointerEffects";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import "./globals.css";
 
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="mn" className={inter.variable}>
       <body>
         <SmoothScroll />
+        <PointerEffects />
         <Navbar />
         <main>{children}</main>
         <Footer />

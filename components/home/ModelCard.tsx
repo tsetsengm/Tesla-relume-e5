@@ -6,15 +6,18 @@ import { cn } from "@/lib/cn";
 
 export function ModelCard({ model }: { model: Model }) {
   return (
-    <GlassCard as="article" interactive className="flex h-full flex-col items-center gap-6 px-3.5 pt-3.5 pb-[26px] text-center">
-      <Image
-        src={model.card.image}
-        alt={model.card.alt}
-        width={592}
-        height={320}
-        sizes="(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 300px"
-        className="aspect-[296/160] w-full rounded-xl object-cover"
-      />
+    <GlassCard as="article" interactive tilt className="flex h-full flex-col items-center gap-6 px-3.5 pt-3.5 pb-[26px] text-center">
+      {/* Depth: the car slides against the card's tilt (--px / --py come from GlassCard `tilt`) */}
+      <div className="w-full overflow-hidden rounded-xl">
+        <Image
+          src={model.card.image}
+          alt={model.card.alt}
+          width={592}
+          height={320}
+          sizes="(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 300px"
+          className="block aspect-[296/160] w-full scale-[1.06] object-cover transition-[translate] duration-300 ease-soft [translate:calc(var(--px,0)*-8px)_calc(var(--py,0)*-6px)] motion-reduce:scale-100 motion-reduce:[translate:none]"
+        />
+      </div>
       <div className="relative flex flex-col gap-3.5 px-1.5">
         <h3 className="heading-5">{model.name}</h3>
         <p className="text-[15px] leading-[1.6] text-muted">{model.card.description}</p>
@@ -26,7 +29,7 @@ export function ModelCard({ model }: { model: Model }) {
         </p>
       )}
       <div className={cn("relative flex items-center justify-center gap-3.5", !model.deposit && "mt-auto")}>
-        <Button href={`/order/${model.slug}`} size="sm">
+        <Button href={`/order/${model.slug}`} size="sm" magnetic>
           Одоо захиалах
         </Button>
         {/* Similarity: same look ⇒ same behaviour. "›" opens another page, "↓" jumps to this model's showcase below */}

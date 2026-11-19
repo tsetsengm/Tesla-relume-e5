@@ -70,7 +70,7 @@ export default async function HomePage() {
                 {/* Similarity: one green action per section */}
                 <div className="flex flex-wrap items-center gap-6">
                   {/* Same label ⇒ same action as the card: the model's order page */}
-                  <Button href={`/order/${model.slug}`}>{model.showcase.primaryAction}</Button>
+                  <Button href={`/order/${model.slug}`} magnetic>{model.showcase.primaryAction}</Button>
                   {model.detailHref && (
                     <Button href={model.detailHref} variant="link" icon="chevron">
                       Дэлгэрэнгүй

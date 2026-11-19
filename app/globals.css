@@ -108,6 +108,52 @@
   }
 }
 
+/* Cursor-following glow + border light; PointerEffects writes --sx / --sy on [data-spotlight].
+   --spot-size sets the glow radius (bigger on large panels). */
+@utility spotlight {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 300ms var(--ease-soft);
+  }
+  &::before {
+    inset: 0;
+    background: radial-gradient(var(--spot-size, 420px) circle at var(--sx, 0px) var(--sy, 0px), rgb(93 240 168 / 0.1), transparent 70%);
+  }
+  &::after {
+    inset: -1px;
+    padding: 1px;
+    background: radial-gradient(240px circle at var(--sx, 0px) var(--sy, 0px), rgb(93 240 168 / 0.6), transparent 70%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  &:hover::before,
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+/* Glow-only spotlight as a child element, for hosts whose pseudo-elements are taken (e.g. `hairline`).
+   Put `data-spotlight` on the host and this as its direct child. */
+@utility spotlight-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms var(--ease-soft);
+  background: radial-gradient(var(--spot-size, 420px) circle at var(--sx, 0px) var(--sy, 0px), rgb(93 240 168 / 0.1), transparent 70%);
+  [data-spotlight]:hover > & {
+    opacity: 1;
+  }
+}
+
 /* ============ Base ============ */
 @layer base {
   html {

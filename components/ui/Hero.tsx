@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { HeroParallax } from "@/components/ui/HeroParallax";
 import { cn } from "@/lib/cn";
 
 type HeroProps = {
@@ -35,7 +36,7 @@ export function Hero({ image, children, compact = false, media = "full", classNa
         className,
       )}
     >
-      <div className={cn("absolute inset-0", mediaBox[media])}>
+      <HeroParallax className={cn("absolute inset-0", mediaBox[media])}>
         <Image
           src={image}
           alt=""
@@ -50,7 +51,7 @@ export function Hero({ image, children, compact = false, media = "full", classNa
               : "mask-[linear-gradient(180deg,#000_35%,transparent_92%)]",
           )}
         />
-      </div>
+      </HeroParallax>
       <div className="absolute inset-0 bg-[radial-gradient(125%_62%_at_50%_-10%,rgb(4_6_15/0.82)_0%,rgb(4_6_15/0.28)_44%,transparent_68%),linear-gradient(90deg,rgb(4_6_15/0.75)_0%,transparent_70%)]" />
       <div className="relative mx-auto w-full max-w-site">{children}</div>
     </section>
