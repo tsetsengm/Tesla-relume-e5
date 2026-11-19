@@ -161,6 +161,8 @@ export const motions = [
   { name: "Card tilt", slug: "card-tilt", trigger: "Hover (mouse), GlassCard tilt", where: "components/ui/GlassCard.tsx", spec: "perspective 900px, rotateX ±5°, rotateY ±6° · 300ms ease-soft; ModelCard зураг эсрэг тийш 8×6px", reduced: "Унтарна" },
   { name: "Button lift", slug: "button-lift", trigger: "Hover", where: "components/ui/Button.tsx", spec: "translateY -2px + shadow-glow-lg · 200ms", reduced: "Хэвээр" },
   { name: "Magnetic button", slug: "magnetic", trigger: "Hover (mouse), Button magnetic", where: "components/ui/MagneticLink.tsx", spec: "Курсор руу зайны 35% татагдана, текст ×1.45; damped spring (k .16, damping .74)", reduced: "Унтарна" },
+  { name: "Blur text", slug: "blur-text", trigger: "Scroll", where: "components/ui/BlurText.tsx", spec: "Үг бүр blur 10px → 0, opacity .12 → 1; дээд ирмэг viewport-ийн 92% → 50% хүртэл, ~3 үг зэрэг", reduced: "Шууд тод" },
+  { name: "Pinned stack", slug: "pinned-stack", trigger: "Scroll (≥992px өргөн, ≥800px өндөр)", where: "components/ui/StackCard.tsx · app/page.tsx", spec: "Showcase панел top 132px-д sticky; дарагдсан панел scale 1 → .94, 70% хүртэл бараан", reduced: "Sticky хэвээр, scale унтарна" },
   { name: "Hero parallax", slug: "hero-parallax", trigger: "Scroll", where: "components/ui/HeroParallax.tsx", spec: "Зураг scroll-ийн 30%-иар удаан хөдөлж, scale 1.06 → 1", reduced: "Унтарна, зураг хөдөлгөөнгүй" },
   { name: "Chevron nudge", slug: "chevron-nudge", trigger: "Hover", where: "components/ui/Button.tsx", spec: "Сум translateX 3px · 200ms", reduced: "Хэвээр" },
   { name: "Image zoom", slug: "image-zoom", trigger: "Hover", where: "components/ui/FeatureShowcase.tsx", spec: "scale 1 → 1.04 · 1200ms ease-soft", reduced: "Хэвээр" },

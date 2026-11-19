@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import type { ShowcaseMedia } from "@/data/models";
+import { BlurText } from "@/components/ui/BlurText";
 import { cn } from "@/lib/cn";
 
 type FeatureShowcaseProps = {
@@ -58,7 +59,7 @@ export function FeatureShowcase({ media, title, tagline, paragraphs, reverse = f
       <div className="flex shrink-0 basis-1/2 flex-col justify-center gap-8 p-14 max-lg:basis-auto max-lg:p-10 max-sm:px-[22px] max-sm:py-7">
         <div className="flex flex-col text-[17px] leading-[1.65] text-muted">
           {tagline && <p className="tagline mb-3.5">{tagline}</p>}
-          <h2 className="heading-2 mb-[22px] text-ink">{title}</h2>
+          <BlurText as="h2" text={title} className="heading-2 mb-[22px] text-ink" />
           {paragraphs.map((p, i) => (
             <p key={i} className={cn(i > 0 && "mt-[18px]")}>
               {p}

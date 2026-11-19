@@ -34,6 +34,9 @@
   --container-site: 80rem; /* 1280px */
 }
 
+/* Pinned stacks (home model showcases): only where a 640px panel fits under navbar + stepper. Keep in sync with StackCard.tsx */
+@custom-variant pin (@media (min-width: 62rem) and (min-height: 50rem));
+
 /* ============ Reusable typography ============ */
 /* Model detail hero title */
 @utility display {

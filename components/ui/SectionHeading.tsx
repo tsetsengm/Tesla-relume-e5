@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import { BlurText } from "./BlurText";
 import { Reveal, type RevealVariant } from "./Reveal";
 
 type Spacing = "default" | "compact" | "none";
@@ -26,9 +27,8 @@ export function SectionHeading({ tagline, title, text, variant, spacing = "defau
           <span className="tagline mb-3.5 block">{tagline}</span>
         </Reveal>
       )}
-      <Reveal variant={variant} delay={80}>
-        <h2 className="heading-2">{title}</h2>
-      </Reveal>
+      {/* Words sharpen out of a blur as the heading scrolls up */}
+      <BlurText as="h2" text={title} className="heading-2" />
       {text && (
         <Reveal variant={variant} delay={160}>
           <p className="lead mt-[18px]">{text}</p>

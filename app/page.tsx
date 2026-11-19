@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { BankStrip } from "@/components/home/BankLogos";
 import { LoanBox } from "@/components/home/LoanBox";
 import { ModelCard } from "@/components/home/ModelCard";
@@ -9,6 +10,7 @@ import { Hero } from "@/components/ui/Hero";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { StackCard } from "@/components/ui/StackCard";
 import { robotaxiSlides } from "@/data/models";
 import { getModels } from "@/lib/models";
 
@@ -56,9 +58,14 @@ export default async function HomePage() {
       <div className="relative mt-8 lg:mt-14">
         <ModelStepper steps={models.map((m) => ({ slug: m.slug, name: m.name }))} />
         {models.map((model, i) => (
-          // scroll-margin clears the navbar (72px) + stepper (~58px)
-          <Section key={model.slug} id={model.slug} compact className="scroll-mt-[136px]">
+          <Fragment key={model.slug}>
+            {/* Anchor + scroll-spy target. Kept off the sticky section: a pinned section reports its stuck position,
+                so jumping back to it would go nowhere. scroll-margin clears the navbar (72px) + stepper (~58px) */}
+            <div id={model.slug} aria-hidden className="scroll-mt-[136px]" />
+          {/* Pinned stack (desktop): each showcase sticks under the stepper and the next one slides over it */}
+          <Section compact className="pin:sticky pin:top-[132px] pin:pt-4">
             <Reveal variant="grow">
+              <StackCard>
               <FeatureShowcase
                 media={model.showcase.media}
                 tagline={`${String(i + 1).padStart(2, "0")} / ${total}`}
@@ -78,8 +85,10 @@ export default async function HomePage() {
                   )}
                 </div>
               </FeatureShowcase>
+              </StackCard>
             </Reveal>
           </Section>
+          </Fragment>
         ))}
       </div>
 
