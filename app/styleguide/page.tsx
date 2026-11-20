@@ -382,7 +382,7 @@ export default async function StyleguidePage() {
                 className="flex flex-col gap-6"
               >
                 <div className="flex flex-wrap items-center gap-4">
-                  <Button href="#components" icon="arrow">
+                  <Button testDrive icon="arrow">
                     Test drive
                   </Button>
                   <Button href="#components" magnetic>Одоо захиалах</Button>
@@ -394,7 +394,7 @@ export default async function StyleguidePage() {
                   </Button>
                 </div>
                 <div className="flex flex-wrap items-center gap-4">
-                  <Button href="#components" size="sm">
+                  <Button testDrive size="sm">
                     Test drive
                   </Button>
                   <Button href="#components" variant="secondary" size="sm">

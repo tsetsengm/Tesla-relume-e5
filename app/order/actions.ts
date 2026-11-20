@@ -1,9 +1,9 @@
 "use server";
 
-import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { getModelDetail } from "@/data/model-details";
 import { createCheckout } from "@/lib/byl";
+import { requestOrigin } from "@/lib/request-origin";
 import { createSupabaseClient } from "@/lib/supabase";
 import { createSupabaseAdmin } from "@/lib/supabase-admin";
 
@@ -17,14 +17,6 @@ export type OrderState = {
 };
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-/** Site origin of the current request, so Byl returns the buyer to the same deployment. */
-async function requestOrigin() {
-  const h = await headers();
-  const host = h.get("x-forwarded-host") ?? h.get("host");
-  const proto = h.get("x-forwarded-proto") ?? (host?.startsWith("localhost") ? "http" : "https");
-  return `${proto}://${host}`;
-}
 
 /**
  * Order form on /order/[slug].

@@ -145,6 +145,57 @@ export type Database = {
         };
         Relationships: [];
       };
+      test_drives: {
+        Row: {
+          amount: number;
+          byl_checkout_id: number | null;
+          created_at: string;
+          customer_email: string;
+          customer_name: string;
+          customer_phone: string;
+          hold_expires_at: string;
+          id: string;
+          model_name: string;
+          model_slug: string;
+          note: string | null;
+          paid_at: string | null;
+          slot_start: string;
+          status: string;
+        };
+        Insert: {
+          amount: number;
+          byl_checkout_id?: number | null;
+          created_at?: string;
+          customer_email: string;
+          customer_name: string;
+          customer_phone: string;
+          hold_expires_at: string;
+          id?: string;
+          model_name: string;
+          model_slug: string;
+          note?: string | null;
+          paid_at?: string | null;
+          slot_start: string;
+          status?: string;
+        };
+        Update: {
+          amount?: number;
+          byl_checkout_id?: number | null;
+          created_at?: string;
+          customer_email?: string;
+          customer_name?: string;
+          customer_phone?: string;
+          hold_expires_at?: string;
+          id?: string;
+          model_name?: string;
+          model_slug?: string;
+          note?: string | null;
+          paid_at?: string | null;
+          slot_start?: string;
+          status?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: { [_ in never]: never };
     Functions: {

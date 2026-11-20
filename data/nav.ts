@@ -16,7 +16,7 @@ export const footerColumns: { title: string; links: NavLink[] }[] = [
       { label: "Cybertruck", href: "/#cybertruck" },
       { label: "Roadster", href: "/#roadster" },
       { label: "Robotaxi", href: "/#robotaxi" },
-      { label: "Test drive", href: "#contact" },
+      { label: "Test drive", href: "/test-drive" },
     ],
   },
   {

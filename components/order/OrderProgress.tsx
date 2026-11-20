@@ -5,6 +5,7 @@ import { cn } from "@/lib/cn";
 export const orderSteps = {
   deposit: ["Мэдээлэл", "Төлбөр", "Баталгаажуулалт"],
   request: ["Мэдээлэл", "Илгээх", "Холбогдоно"],
+  testDrive: ["Машин", "Цаг", "Төлбөр"],
 } as const;
 
 type OrderProgressProps = {

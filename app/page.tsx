@@ -31,7 +31,7 @@ export default async function HomePage() {
             </p>
           </Reveal>
           <Reveal variant="grow" delay={300} className="mt-3.5 flex flex-wrap items-center gap-3.5 max-sm:[&>*]:flex-[1_1_100%]">
-            <Button href="#contact" icon="arrow">
+            <Button testDrive icon="arrow">
               Test drive
             </Button>
             <Button href="#contact" variant="secondary">

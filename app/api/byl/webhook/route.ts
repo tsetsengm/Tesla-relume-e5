@@ -1,5 +1,6 @@
 import { type BylCheckoutCompleted, verifyBylSignature } from "@/lib/byl";
 import { markOrderPaid, UUID } from "@/lib/orders";
+import { markTestDrivePaid } from "@/lib/test-drive";
 
 type BylEvent = { id: number; type: string; data: { object: unknown } };
 
@@ -27,7 +28,9 @@ export async function POST(request: Request) {
     // Checkouts made elsewhere (e.g. Byl payment links) carry no order id of ours — just acknowledge them
     if (orderId && UUID.test(orderId)) {
       try {
+        // The id is either a car order or a test-drive booking; each update only touches its own table
         await markOrderPaid(orderId, checkout);
+        await markTestDrivePaid(orderId, checkout);
       } catch (err) {
         console.error("Byl webhook: order update failed", err);
         return Response.json({ error: "db" }, { status: 500 }); // Byl will retry

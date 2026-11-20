@@ -3,7 +3,7 @@ import { Hero } from "@/components/ui/Hero";
 import { Reveal } from "@/components/ui/Reveal";
 import type { ModelDetail } from "@/data/model-details/types";
 
-export function ModelHero({ hero }: { hero: ModelDetail["hero"] }) {
+export function ModelHero({ hero, slug }: { hero: ModelDetail["hero"]; slug: string }) {
   return (
     <Hero image={hero.image} media="right">
       <div className="flex max-w-[768px] flex-col gap-5">
@@ -19,7 +19,7 @@ export function ModelHero({ hero }: { hero: ModelDetail["hero"] }) {
           <p className="max-w-[560px] text-[clamp(16px,2vw,19px)] leading-[1.6] text-muted">{hero.text}</p>
         </Reveal>
         <Reveal delay={260} className="mt-3.5 flex flex-wrap items-center gap-3.5 max-sm:[&>*]:flex-[1_1_100%]">
-          <Button href="#contact" icon="arrow">
+          <Button testDrive={slug} icon="arrow">
             Test drive
           </Button>
           <Button href="#specs" variant="secondary">

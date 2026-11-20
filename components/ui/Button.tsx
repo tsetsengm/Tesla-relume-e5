@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
+import { testDriveHref } from "@/lib/test-drive-slots";
 import { MagneticLink } from "@/components/ui/MagneticLink";
 
 type Variant = "primary" | "secondary" | "link";
@@ -20,6 +21,8 @@ type ButtonProps = {
   className?: string;
   /** Links only — the button leans toward the cursor and springs back (fine pointers, motion allowed) */
   magnetic?: boolean;
+  /** Links to the test-drive booking page (replaces `href`). A model slug preselects that car */
+  testDrive?: boolean | string;
 };
 
 const base =
@@ -38,7 +41,8 @@ const sizes: Record<Size, string> = {
   sm: "px-4 py-2 text-sm",
 };
 
-export function Button({ children, variant = "primary", size = "md", icon, href, type = "button", disabled, className, magnetic }: ButtonProps) {
+export function Button({ children, variant = "primary", size = "md", icon, href: hrefProp, type = "button", disabled, className, magnetic, testDrive }: ButtonProps) {
+  const href = testDrive ? testDriveHref(testDrive) : hrefProp;
   const classes = cn(base, variants[variant], variant !== "link" && sizes[size], variant === "link" && size === "sm" && "text-sm", variant === "link" && size === "md" && "text-[15px]", className);
 
   const iconEl = icon && (

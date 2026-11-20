@@ -2,9 +2,9 @@ import { Button } from "@/components/ui/Button";
 import { BlurText } from "@/components/ui/BlurText";
 import { Reveal } from "@/components/ui/Reveal";
 
-type CtaCardProps = { tagline: string; title: string; text: string };
+type CtaCardProps = { tagline: string; title: string; text: string; /** Model slug: the test-drive button preselects this car */ slug?: string };
 
-export function CtaCard({ tagline, title, text }: CtaCardProps) {
+export function CtaCard({ tagline, title, text, slug }: CtaCardProps) {
   return (
     <Reveal className="mx-auto max-w-[760px]">
       {/* Spotlight on an inner panel: Reveal owns the outer box's transitions. Children sit above the glow (relative) */}
@@ -16,7 +16,7 @@ export function CtaCard({ tagline, title, text }: CtaCardProps) {
         <BlurText as="h2" text={title} className="heading-2" />
         <p className="mx-auto mt-[18px] mb-[34px] max-w-[520px] text-lg leading-[1.65] text-muted">{text}</p>
         <div className="flex flex-wrap items-center justify-center gap-6">
-          <Button href="#contact" icon="arrow">
+          <Button testDrive={slug ?? true} icon="arrow">
             Test drive
           </Button>
           <Button href="/#model-3" variant="secondary">

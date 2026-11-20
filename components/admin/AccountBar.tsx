@@ -13,6 +13,9 @@ export function AccountBar({ admin }: { admin: Admin }) {
         <Link href="/admin/orders" className="text-muted transition-colors hover:text-ink">
           Захиалгууд
         </Link>
+        <Link href="/admin/test-drives" className="text-muted transition-colors hover:text-ink">
+          Туршилтын жолоодлого
+        </Link>
         <Link href="/" target="_blank" className="inline-flex items-center gap-1.5 text-muted transition-colors hover:text-ink">
           Сайтыг харах <ExternalLink className="size-3.5" aria-hidden />
         </Link>

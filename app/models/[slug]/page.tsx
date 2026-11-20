@@ -53,7 +53,7 @@ async function ModelContent({ params }: { params: PageProps<"/models/[slug]">["p
 
   return (
     <>
-      <ModelHero hero={hero} />
+      <ModelHero hero={hero} slug={slug} />
 
       {/* Uniform Connectedness: one sticky bar links every chapter of the page */}
       <div className="relative">
@@ -106,7 +106,7 @@ async function ModelContent({ params }: { params: PageProps<"/models/[slug]">["p
       </Section>
 
       <Section>
-        <CtaCard {...cta} />
+        <CtaCard {...cta} slug={slug} />
       </Section>
       </div>
     </>

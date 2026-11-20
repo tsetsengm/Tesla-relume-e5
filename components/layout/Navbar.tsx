@@ -51,7 +51,7 @@ export function Navbar() {
             <Button href="#contact" variant="secondary" size="sm">
               Холбоо барих
             </Button>
-            <Button href="#contact" size="sm">
+            <Button testDrive size="sm">
               Test drive
             </Button>
           </div>

@@ -296,7 +296,7 @@ export function OrderCheckout({ slug, model, deposit, loanRate, trims, initialTr
 }
 
 /** Step number + title on a left rule — the form reads 01 → 02 → 03. */
-function Step({ n, title, children }: { n: string; title: string; children: React.ReactNode }) {
+export function Step({ n, title, children }: { n: string; title: string; children: React.ReactNode }) {
   return (
     <section className="relative flex flex-col gap-5 border-l border-line pl-6 sm:pl-8">
       <span className="absolute top-0 -left-[13px] grid size-[26px] place-items-center rounded-full border border-line-strong bg-bg text-[11px] font-semibold text-accent">
