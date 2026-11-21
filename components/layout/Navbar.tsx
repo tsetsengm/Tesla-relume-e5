@@ -47,7 +47,8 @@ export function Navbar() {
               <ActiveNavLinks onNavigate={close} />
             </Suspense>
           </nav>
-          <div className="flex gap-3">
+          {/* Close the mobile menu when either button is followed — otherwise it stays open over the next page */}
+          <div className="flex gap-3" onClick={close}>
             <Button href="#contact" variant="secondary" size="sm">
               Холбоо барих
             </Button>

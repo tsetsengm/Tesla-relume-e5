@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Fragment } from "react";
 import { BankStrip } from "@/components/home/BankLogos";
 import { LoanBox } from "@/components/home/LoanBox";
@@ -6,7 +7,6 @@ import { ModelStepper } from "@/components/home/ModelStepper";
 import { RobotaxiSlider } from "@/components/home/RobotaxiSlider";
 import { Button } from "@/components/ui/Button";
 import { FeatureShowcase } from "@/components/ui/FeatureShowcase";
-import { Hero } from "@/components/ui/Hero";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -20,26 +20,42 @@ export default async function HomePage() {
 
   return (
     <>
-      <Hero image="/assets/images/hero.jpg" compact>
-        <div className="flex max-w-[768px] flex-col gap-6">
-          <Reveal variant="grow" delay={60}>
-            <h1 className="heading-1">Албан ёсны дистрибютер</h1>
-          </Reveal>
+      {/* Golden ratio hero: text 1 : photo φ (38.2% / 61.8%), the photo is a golden rectangle (φ:1),
+          type steps by φ (19px → 31px → 50px), line height φ, spacing on Fibonacci numbers (13 · 21 · 34 · 55 · 89) */}
+      <section className="px-4 py-[55px] sm:px-8 lg:px-16 lg:py-[89px]">
+        <div className="mx-auto grid w-full max-w-site items-center gap-[34px] lg:grid-cols-[1fr_1.618fr] lg:gap-[55px]">
+          <div className="flex flex-col gap-[21px]">
+            <Reveal variant="grow" delay={60}>
+              <h1 className="heading-1 text-[clamp(40px,3.9vw,50px)]!">Албан ёсны дистрибютер</h1>
+            </Reveal>
+            <Reveal variant="grow" delay={180}>
+              <p className="text-[clamp(16px,1.6vw,19px)] leading-[1.618] text-muted">
+                Хүчирхэг, хэмнэлттэй, байгальд ээлтэй ирээдүйн жолоодлогыг өнөөдөр эхлүүл.
+              </p>
+            </Reveal>
+            <Reveal variant="grow" delay={300} className="mt-[13px] flex flex-wrap items-center gap-[13px] max-sm:[&>*]:flex-[1_1_100%]">
+              <Button testDrive icon="arrow">
+                Test drive
+              </Button>
+              <Button href="#contact" variant="secondary">
+                Холбоо барих
+              </Button>
+            </Reveal>
+          </div>
           <Reveal variant="grow" delay={180}>
-            <p className="max-w-[560px] text-[clamp(16px,2vw,19px)] leading-[1.6] text-muted">
-              Хүчирхэг, хэмнэлттэй, байгальд ээлтэй ирээдүйн жолоодлогыг өнөөдөр эхлүүл.
-            </p>
-          </Reveal>
-          <Reveal variant="grow" delay={300} className="mt-3.5 flex flex-wrap items-center gap-3.5 max-sm:[&>*]:flex-[1_1_100%]">
-            <Button testDrive icon="arrow">
-              Test drive
-            </Button>
-            <Button href="#contact" variant="secondary">
-              Холбоо барих
-            </Button>
+            <div className="group relative aspect-[1.618] overflow-hidden rounded-panel border border-line">
+              <Image
+                src="/assets/images/hero.jpg"
+                alt="Tesla-ийн загварууд салоны өмнө"
+                fill
+                priority
+                sizes="(min-width: 992px) 62vw, 100vw"
+                className="object-cover transition-transform duration-700 ease-soft group-hover:scale-[1.03] motion-reduce:transition-none"
+              />
+            </div>
           </Reveal>
         </div>
-      </Hero>
+      </section>
 
       <Section id="models" compact>
         <SectionHeading variant="grow" tagline="Загварууд" title="Өөрт тохирох Tesla-гаа сонго" spacing="compact" wide />
